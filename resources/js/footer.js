@@ -126,7 +126,7 @@ footer.innerHTML = `
          </div>
 
          <span class="footer__copy">
-            &copy; Todos los derechos reservados a Teresa Ruiz y  Aniket Gawade
+            &copy; Todos los derechos reservados a Veronica Sanchez
          </span>
 
       </footer>

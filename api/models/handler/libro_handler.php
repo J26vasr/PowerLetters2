@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once ('../../helpers/database.php');
+require_once('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
@@ -200,7 +200,7 @@ class LibroHandler
             return false;
         }
     }
-    
+
     // Método para gráficar el top 5 de productos más vendidos de una categoría.
     public function readTopProductos()
     {
@@ -217,10 +217,15 @@ class LibroHandler
 
     public function porcentajeProductosEditorial()
     {
-        $sql = 'SELECT nombre, ROUND((COUNT(id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) porcentaje
-                FROM tb_libros
-                INNER JOIN tb_editoriales USING(id_editorial)
-                GROUP BY nombre ORDER BY porcentaje DESC';
+        // SQL query to calculate the percentage of products by editorial.
+        $sql = 'SELECT tb_editoriales.nombre, 
+                   ROUND((COUNT(tb_libros.id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) AS porcentaje
+            FROM tb_libros
+            INNER JOIN tb_editoriales ON tb_libros.id_editorial = tb_editoriales.id_editorial
+            GROUP BY tb_editoriales.nombre
+            ORDER BY porcentaje DESC';
+
+        // Execute the query and return the result.
         return Database::getRows($sql);
     }
 }

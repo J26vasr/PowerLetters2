@@ -77,7 +77,7 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
             <tr>
-                <td>${row.titulo_libro}</td>
+                <td>${row.nombre_producto}</td>
                 <td>${row.descripcion_libro}</td>
                 <td><img src="${SERVER_URL}images/libros/${row.imagen}" width="50"></td>
                 <td>${row.precio}</td>
