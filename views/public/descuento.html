@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/swiper-bundle.min.css">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
+    <link rel="stylesheet" href="../../Resources/css/descuento.css">
+    <title>Power Letters</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+
+    </header>
+
+    <!--==================== MAIN ====================-->
+
+    <main class="main">
+
+
+        <!--==================== Filtrador ====================-->
+
+        <br><br><br>
+        <!-- Formulario de búsqueda y botón de agregar -->
+
+        <br><br><br><br><br><br>
+        <div class="wrapper">
+
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search-container">
+                    <input type="search" id="search-input2" name="search" class="search-input"
+                        placeholder="Buscar por título de libro...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+                </div>
+            </form>
+
+
+            <div id="buttons">
+
+
+                <input type="number" id="id_libro_descuento" name="id_libro_descuento" style=" display: none;">
+
+
+                <button class="button-value" id="generobtn">Genero
+                    <select name="nombreGEN" id="nombreGEN" class="libro__input" required></select>
+                </button>
+ 
+                <button class="button-value" id="clasificacionbtn">Clasificación
+                    <select name="clasificacion" id="clasificacion" class="libro__input" required></select>
+                </button>
+ 
+ 
+                <button class="button-value" id="editorialbtn">Editorial
+                    <select name="editorial" id="editorial" class="libro__input" required></select>
+                </button>
+ 
+ 
+                <button class="button-value" id="autorbtn" for="product-category">Autor
+                    <select name="autor" id="autor" class="libro__input" required></select>
+                </button>
+
+                <br><br>
+            </div>
+        </div>
+
+
+        <!--==================== NUEVOS LIBROS ====================-->
+
+        <br><br><br><br><br><br>
+        <div class="featured__container container">
+            <div id="librosNuevos"></div>
+        </div>
+
+        </div>
+
+        <br><br><br><br><br><br>
+
+        <!--==================== ACTUALIZACIONES ====================-->
+
+
+        <section class="join section">
+
+            <div class="join__container">
+
+                <img src="../../Resources/img/join-bg.jpg" alt="image" class="join__bg">
+
+
+                <div class="join__data container grid">
+
+                    <h2 class="join__title section__title">
+                        Suscribete para recibir <br>
+                        las últimas actualizaciones
+
+                    </h2>
+
+                    <form action="" class="join__form">
+
+                        <input type="email" placeholder="Enter Email" class="join__input">
+
+                        <button type="submit" class="join__button button">Subscribete</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <footer class="footer" id="footer">
+
+
+        </footer>
+
+    </main>
+
+
+    <!--=============== SWIPER JS ===============-->
+
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <script src="../../Resources/js/footer.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/public/libros_nuevos.js"></script>
+    <!-- Llamada a la función loadTemplate -->
+    <script>
+        // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
+        loadTemplate();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Libro</title>
+    <link rel="stylesheet" href="../../resources/css/styles.css">
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/swiper-bundle.min.css">
+    <!--=============== ESTILO CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/comentarios.css">
+
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="header" id="header">
+        <!--En esta parte aparece el menú -->
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+
+                <!--==================== BOTON DE REDIRECCIONAR ====================-->
+
+                <button id="redirectButton" class="btnFlecha"><i class="ri-arrow-left-circle-line"></i></button>
+
+                <div class="section__title">Detalle del Libro</div>
+                <div class="book-detail">
+                    <div class="book-detail__img-wrapper">
+                        <img src="../../resources/img/book-1.png" alt="Portada del libro" class="book-detail__img"
+                            id="ImagenDetalle">
+                    </div>
+                    <div class="book-detail__content" id="libros">
+                        <h2 class="book-detail__title" id="tituloDetalle">Título del Libro</h2>
+                        <p class="book-detail__author" id="autorDetalle">Autor del Libro</p>
+                        <p class="book-detail__author" id="editorialDetalle">Editorial</p>
+                        <label for="clasificacion" class="libro__label">Clasificación:</label>
+                        <p class="book-detail__author" id="clasificacionDetalle">Clasificación</p>
+                        <p class="book-detail__price" id="precioDetalle">$XX.XX</p>
+                        <p class="book-detail__price">Existencias: <b id="existenciasProducto" data-existencias=""></b>
+                        </p>
+                        <p class="book-detail__description" id="descripcionDetalle">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit. Quisque sit amet accumsan tortor. Integer vel libero nec erat
+                            scelerisque suscipit.</p>
+                        <!-- Formulario para agregar el producto al carrito de compras -->
+                        <form id="shoppingForm">
+                            <!-- Campo oculto para asignar el id del producto -->
+                            <input type="hidden" id="idLibro" name="idLibro">
+                            <div>
+                                <input type="number" id="cantidadLibro" name="cantidadLibro" min="1"
+                                    style="width: 100%; height: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; font-family: Arial, sans-serif;">
+                            </div>
+                            <div>
+                                <br><br><br>
+                                <button type="submit"
+                                    style="background-color: #4CAF50; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                                    <i class="bi bi-cart-plus-fill"></i> Comprar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--==================== APARTADO DE COMENTARIOS ====================-->
+    <h2 class="comentT">Comentarios</h2>
+
+    <br><br><br><br>
+
+    <br><br><br><br>
+    <form id="saveForm">
+        <div class="comentarios">
+            <div>
+                <label for="comentario" class="libro__label"></label>
+                <input type="text" name="comentario" id="comentario" placeholder="Agrega un comentario..."
+                    class="libro__input" required>
+
+                <div class="botones-container">
+                    <br><br><br>
+                    <div class="rating-container">
+                        <div class="rating">
+                            <input type="radio" name="star" id="star5" value="5"><label for="star5"></label>
+                            <input type="radio" name="star" id="star4" value="4"><label for="star4"></label>
+                            <input type="radio" name="star" id="star3" value="3"><label for="star3"></label>
+                            <input type="radio" name="star" id="star2" value="2"><label for="star2"></label>
+                            <input type="radio" name="star" id="star1" value="1"><label for="star1"></label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="botones">
+                    <button type="submit" class="comentario-button">Comentar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br><br><br>
+
+    <div class="featured__container container">
+        <div id="comentarioContenedor"></div>
+    </div>
+
+    <br><br><br><br><br>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <script src="../../controllers/public/detalle.js"></script>
+    <script src="../../controllers/public/comentarios.js"></script>
+    <!--<script src="../../controllers/public/comentarios.js"></script>-->
+    <!-- Llamada a la función loadTemplate -->
+    <script>
+        // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
+        loadTemplate();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+/* Contenedor */
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr; /* Por defecto, una columna */
+    gap: 20px; /* Espacio entre tarjetas */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Tarjetas individuales */
+  .featured__card {
+    position: relative;
+    text-align: center;
+    background-color: var(--container-color);
+    padding: 2rem;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    transition: border 0.4s, background-color 0.4s;
+  }
+  
+  /* Estilo de la imagen */
+  .featured__card .card-img-top {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  /* Título */
+  .featured__title {
+    font-size: var(--h2-font-size);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Precios */
+  .featured__prices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .featured__discount {
+    color: var(--title-color);
+  }
+  
+  /* Botón */
+  .featured__card .button {
+    cursor: pointer;
+  }
+  
+  /* Acciones */
+  .featured__actions {
+    display: inline-flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    position: absolute;
+    top: 2rem;
+    right: -1.5rem;
+    transition: right 0.4s;
+  }
+  
+  .featured__actions button {
+    background: none;
+    font-size: 1.25rem;
+    color: var(--first-color);
+    cursor: pointer;
+  }
+  
+  .featured__card:hover .featured__actions {
+    right: 1.5rem;
+  }
+  
+  /* Estilos para pantallas más grandes */
+  @media (min-width: 768px) {
+    .contenedor {
+      grid-template-columns: repeat(3, 1fr); /* Tres columnas en pantallas grandes */
+    }
+  }
+  
+.section__title{
+  padding-top: 150px;
+}
+
+
+  /***********************FILTRADOR DE LIBROS*************************************/
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+
+}
+
+.wrapper{
+  width: 95%;
+  margin: 0 auto;
+}
+#search-container{
+  margin: 1em 0;
+}
+#search-container input{
+  background-color: transparent;
+  width: 40%;
+  border-bottom: 2px solid #110f29;
+  padding: 1em 0.3em;
+}
+#search-container input:focus{
+  border-bottom-color: #6759ff;
+}
+#search-container button{
+  padding: 1em 2em;
+  margin-left: 1em;
+  background-color: #6759ff;
+  color:#ffffff;
+  border-radius: 5px;
+  margin-top: 0.5em;
+}
+#buttons button{
+  border: 2px solid #6759ff;
+  padding: 1em 2.2em;
+  border-radius: 3em;
+  background-color: transparent;
+  color: #6759ff;
+  cursor: pointer;
+
+}
+.active{
+  background-color: #6759ff;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+#generobtn{
+  margin-right: 20px;
+}
+
+#clasificacionbtn{
+  margin-left: 20px;
+}
+
+#editorialbtn{
+  margin-left: 20px;
+}
+
+
+
+
+  /****************************DISEÑO DE LOS SELECT*************************************/
+.libro__input {
+   width: 150px;
+   background-color: transparent;
+   padding: 1rem;
+   color: var(--text-color);
+
+ }
+
+ .search-input {
+  color: gray;
+}

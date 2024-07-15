@@ -1,0 +1,196 @@
+
+.comentT{
+    text-align: center;
+    font-size: 40px
+}
+
+.libro__input {
+    margin: 0 auto; /* Centra el input horizontalmente */
+    background-color: var(--container-color);
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+    color: var(--text-color);
+    text-align: center; /* Alinea el texto al centro */
+    display: block; /* Hace que el input sea un bloque */
+    width: 70%;
+}
+
+/* Contenedor de los botones */
+.botones {
+    display: flex; /* Utiliza flexbox */
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 1em; /* Añade un margen arriba para separarlos de otros elementos */
+}
+
+/* Estilos de los botones */
+.comentario-button, .cancelar-button {
+    padding: 1em 2em;
+    background-color: #6759ff;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 0.5em; /* Margen entre los botones */
+}
+
+/* Estilo para el boton de redireccionar */
+.btnFlecha {
+    background-color: #6759ff;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+}
+
+/* Estilo para el icono dentro del botón */
+.btnFlecha i {
+    font-size: 2em; /* Ajusta este valor al tamaño deseado */
+}
+
+/********************************Diseño de estrellas**************************************/
+
+ /* Estilos existentes */
+ .rating:not(:checked) > input {
+    position: absolute;
+    appearance: none;
+}
+
+.rating:not(:checked) > label {
+    float: right;
+    cursor: pointer;
+    font-size: 30px;
+    color: #666;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+    color: #ffa723;
+}
+
+/* Nuevos estilos para centrar las estrellas */
+.rating-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente (opcional) */
+    height: 100%; /* Asegura que el contenedor tenga una altura para centrar verticalmente */
+}
+  
+/****************************************DISEÑO DE TARJETAS*******************************************/
+ /* Contenedor */
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr; /* Por defecto, una columna */
+    gap: 20px; /* Espacio entre tarjetas */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Tarjetas individuales */
+  .featured__card {
+    position: relative;
+    text-align: center;
+    background-color: var(--container-color);
+    padding: 2rem;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    transition: border 0.4s, background-color 0.4s;
+  }
+  
+  /* Estilo de la imagen */
+  .featured__card .card-img-top {
+    width: 100%;
+    border-radius: 200px;
+    
+  }
+  
+  /* Título */
+  .featured__title {
+    font-size: var(--h2-font-size);
+    margin-bottom: 0.5rem;
+    margin-top: 50px ;
+  }
+  
+  /* Precios */
+  .featured__prices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .featured__discount {
+    color: var(--title-color);
+  }
+  
+  /* Botón */
+  .featured__card .button {
+    cursor: pointer;
+  }
+  
+  /* Acciones */
+  .featured__actions {
+    display: inline-flex;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    position: absolute;
+    top: 2rem;
+    right: -1.5rem;
+    transition: right 0.4s;
+  }
+  
+  .featured__actions button {
+    background: none;
+    font-size: 1.25rem;
+    color: var(--first-color);
+    cursor: pointer;
+  }
+  
+  .featured__card:hover .featured__actions {
+    right: 1.5rem;
+  }
+  
+  /* Estilos para pantallas más grandes */
+  @media (min-width: 768px) {
+    .contenedor {
+      grid-template-columns: repeat(3, 1fr); /* Tres columnas en pantallas grandes */
+    }
+  }
+  
+.section__title{
+  padding-top: 60px;
+}
+/*******************************DISEÑO DE ESTRELLAS***********************************/
+ 
+.fa-star {
+  font-family: FontAwesome;
+}
+
+.checked {
+  color: orange;
+}
+
+.calificacion__input .fa-star {
+  font-family: FontAwesome;
+}
+
+.calificacion__input .checked {
+  color: orange;
+}
