@@ -84,7 +84,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
                 case 'readTopProductos':
-                    if (!$categoria->setId($_POST['idCategoria'])) {
+                    if (!$categoria->setId($_POST['idEditorial'])) {
                         $result['error'] = $categoria->getDataError();
                     } elseif ($result['dataset'] = $categoria->readTopProductos()) {
                         $result['status'] = 1;
