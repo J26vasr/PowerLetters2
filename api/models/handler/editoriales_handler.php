@@ -105,4 +105,17 @@ class EditorialesHandler
         // Ejecutar la consulta y devolver el resultado
         return Database::executeRow($sql, $params);
     }
+     // Método para gráficar el top 5 de productos más vendidos de una categoría.
+     public function readTopProductos()
+     {
+         $sql = 'SELECT nombre_producto, SUM(cantidad) total
+                 FROM tb_detalle_pedidos
+                 INNER JOIN producto USING(id_libro)
+                 WHERE id_editorial = ?
+                 GROUP BY nombre_producto
+                 ORDER BY total DESC
+                 LIMIT 5';
+         $params = array($this->id);
+         return Database::getRows($sql, $params);
+     }
 }
