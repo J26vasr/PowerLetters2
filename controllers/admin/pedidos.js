@@ -83,6 +83,10 @@ const fillTable = async (form = null) => {
                     <a onclick="openUpdate(${row.id_pedido})">
                     <i class="ri-edit-line"></i>
                     </a>
+                    <a onclick="openUpdate(${row.id_pedido})">
+                    <i class="ri-bar-chart-2-fill"></i>
+                    </a>
+                   
                 </td>
             </tr>
             `;
