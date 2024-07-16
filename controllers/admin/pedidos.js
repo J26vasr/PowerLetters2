@@ -30,6 +30,8 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     fillTable(FORM);
 });
 
+
+
 // Método del evento para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -83,7 +85,7 @@ const fillTable = async (form = null) => {
                     <a onclick="openUpdate(${row.id_pedido})">
                     <i class="ri-edit-line"></i>
                     </a>
-                    <a onclick="openUpdate(${row.id_pedido})">
+                    <a onclick="openChart(${row.id_pedido})">
                     <i class="ri-bar-chart-2-fill"></i>
                     </a>
                    
@@ -98,6 +100,12 @@ const fillTable = async (form = null) => {
     }
 
 }
+
+function openMODALG() {
+    var modal = document.getElementById("modalG");
+    modal.style.display = "block";
+}
+
 
 const openUpdate = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
@@ -150,4 +158,43 @@ const viewDetails = async (id) => {
     } else {
         sweetAlert(2, DATA.error, false);
     }
+}
+
+
+
+
+/*
+*   Función asíncrona para mostrar un gráfico parametrizado.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+
+const openChart = async (id) => {
+    
+    openMODALG();
+     // Se define una constante tipo objeto con los datos del registro seleccionado.
+     const FORM = new FormData();
+     FORM.append('id_pedido', id);
+     // Petición para obtener los datos del registro solicitado.
+     const DATA = await fetchData(PEDIDO_API, 'readTopProductos', FORM);
+     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con el error.
+     if (DATA.status) {
+         // Se muestra la caja de diálogo con su título.
+         CHART_MODAL.show();
+         // Se declaran los arreglos para guardar los datos a graficar.
+         let usuario = [];
+         let unidades = [];
+         // Se recorre el conjunto de registros fila por fila a través del objeto row.
+         DATA.dataset.forEach(row => {
+             // Se agregan los datos a los arreglos.
+             usuario.push(row.titulo);
+             unidades.push(row.total);
+         });
+         // Se agrega la etiqueta canvas al contenedor de la modal.
+         document.getElementById('chartContainer').innerHTML = `<canvas id="chart"></canvas>`;
+         // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
+         barGraph('chart', usuario, unidades, 'Cantidad de productos', 'Top 5 de productos con más unidades vendidas');
+     } else {
+         sweetAlert(4, DATA.error, true);
+     }
 }

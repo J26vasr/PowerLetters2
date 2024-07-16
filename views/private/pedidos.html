@@ -136,8 +136,29 @@
             </div>
         </div>
 
+        </head>
+
+        <body>
+
+
+
+            <!-- Modal de la vista con imagen a la izquierda -->
+            <div id="modalG" class="MODAL">
+                <div class="modal-background"></div>
+                <div class="modal-content card">
+                    <span onclick="closeMODALG()" class="close"
+                        style="font-size: 40px; font-weight: bold;">&times;</span>
+
+                    <!-- Contenedor para mostrar el gráfico -->
+                    <div class="modal-body" id="chartContainer"></div>
+                    
+                    
+                </div>
+            </div>
 
     </main>
+    <!-- Llamada a la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->
+    <script type="text/javascript" src="../../resources/js/chart.umd.min.js"></script>
     <!--=============== SWIPER JS ===============-->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
     <!--=============== SCROLLREVEAL ===============-->
