@@ -313,4 +313,13 @@ class PedidoHandler
         $params = array($this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
+    public function porcentajePedidosUsuario()
+    {
+        $sql = 'SELECT nombre_usuario, ROUND((COUNT(id_pedido) * 100.0 / (SELECT COUNT(id_pedido) FROM tb_pedidos)), 2) porcentaje
+                FROM tb_pedidos
+                INNER JOIN tb_usuarios USING(id_usuario)
+                GROUP BY nombre_usuario ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
+
 }

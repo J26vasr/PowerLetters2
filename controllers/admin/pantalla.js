@@ -27,7 +27,7 @@ const graficoPastelEditoriales = async () => {
             porcentajes.push(row.porcentaje);
         });
         // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('chart2', editoriales, porcentajes, 'Porcentaje de productos por categoría');
+        pieGraph('chart2', editoriales, porcentajes);
     } else {
         document.getElementById('chart2').remove();
         console.log(DATA.error);

@@ -98,6 +98,13 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
                 }
                 break;
+                case 'porcentajePedidosUsuario':
+                    if ($result['dataset'] = $pedido->porcentajePedidosUsuario()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['error'] = 'No hay datos disponibles';
+                    }
+                    break;
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
         }

@@ -1,0 +1,13 @@
+ /* Ajusta el tamaño del contenedor */
+ #chart-container {
+    width: 500px; /* Ajusta el ancho según tus necesidades */
+    height: 500px; /* Ajusta la altura según tus necesidades */
+    margin-top: 200px;
+}
+#chart2 {
+    width: 120% !important;
+    height: 120% !important;
+}
+.TituloGraficaP{
+    margin-left: 50px;
+}
