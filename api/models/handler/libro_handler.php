@@ -217,15 +217,10 @@ class LibroHandler
 
     public function porcentajeProductosEditorial()
     {
-        // SQL query to calculate the percentage of products by editorial.
-        $sql = 'SELECT tb_editoriales.nombre, 
-                   ROUND((COUNT(tb_libros.id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) AS porcentaje
-            FROM tb_libros
-            INNER JOIN tb_editoriales ON tb_libros.id_editorial = tb_editoriales.id_editorial
-            GROUP BY tb_editoriales.nombre
-            ORDER BY porcentaje DESC';
-
-        // Execute the query and return the result.
+        $sql = 'SELECT nombre, ROUND((COUNT(id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) porcentaje
+                FROM tb_libros
+                INNER JOIN tb_editoriales USING(id_editorial)
+                GROUP BY nombre ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
 }
