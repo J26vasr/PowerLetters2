@@ -79,10 +79,6 @@ const fillTable = async (form = null) => {
                     <a onclick="openDelete(${row.id_editorial})">
                         <i class="ri-delete-bin-line"></i>
                     </a>
-                    <a onclick="openChart(${row.id_editorial})">
-                        <i class="ri-bar-chart-2-fill"></i>
-                    </a>
-                
                 
                 </td>
             </tr>
@@ -163,27 +159,3 @@ const openDelete = async (id) => {
 }
 
 
-/*
-*   Función asíncrona para mostrar un gráfico parametrizado.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
-const openChart = async (id) => {
-  // Se define una constante tipo objeto con los datos del registro seleccionado.
-  const FORM = new FormData();
-  FORM.append('idEditorial', id);
-  // Petición para obtener los datos del registro solicitado.
-  const DATA = await fetchData(EDITORIAL_API, 'readOne', FORM);
-  // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-  if (DATA.status) {
-
-      // Se inicializan los campos con los datos.
-      const ROW = DATA.dataset;
-      ID_EDITORIAL.value = ROW.id_editorial;
-      NOMBRE_EDITORIAL.value = ROW.nombre;
-      AbrirModal();
-      MODAL_TITLE.textContent = 'Actualizar editorial';
-  } else {
-      sweetAlert(2, DATA.error, false);
-  }
-}
