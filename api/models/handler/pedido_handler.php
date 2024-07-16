@@ -321,19 +321,4 @@ class PedidoHandler
                 GROUP BY nombre_usuario ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
-
-
-    // Método para gráficar el top 5 de usuarios que mas pedidos más
-    public function readTopProductos()
-    {
-        $sql = 'SELECT nombre_usuario, SUM(cantidad) AS total
-            FROM tb_pedidos
-            INNER JOIN tb_usuarios ON tb_pedidos.id_usuario = tb_usuarios.id_usuario
-            GROUP BY nombre_usuario
-            ORDER BY total DESC
-            LIMIT 5';
-
-        $params = array($this->id); // Revisa si $this->id es necesario aquí
-        return Database::getRows($sql, $params);
-    }
 }

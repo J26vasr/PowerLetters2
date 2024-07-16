@@ -141,20 +141,22 @@
         <body>
 
 
-
-            <!-- Modal de la vista con imagen a la izquierda -->
-            <div id="modalG" class="MODAL">
-                <div class="modal-background"></div>
-                <div class="modal-content card">
-                    <span onclick="closeMODALG()" class="close"
+            <div class="MODAL" id="modalG">
+            <div class="modal-background">
+                <div class="modal-content">
+                    <div class="modal-content card">
+                        <h1 class="modal-title fs-5" id="chartTitle">Gráfico de la categoría</h1>
+                        <span onclick="closeMODALG()" class="close"
                         style="font-size: 40px; font-weight: bold;">&times;</span>
 
+                        </div>
                     <!-- Contenedor para mostrar el gráfico -->
                     <div class="modal-body" id="chartContainer"></div>
-                    
-                    
+                    <div class="modal-footer">
+                       </div>
                 </div>
             </div>
+        </div>
 
     </main>
     <!-- Llamada a la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->

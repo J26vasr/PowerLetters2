@@ -105,15 +105,6 @@ if (isset($_GET['action'])) {
                         $result['error'] = 'No hay datos disponibles';
                     }
                     break;
-                    case 'readTopProductos':
-                        if (!$categoria->setId($_POST['id_pedido'])) {
-                            $result['error'] = $pedido->getDataError();
-                        } elseif ($result['dataset'] = $pedido->readTopProductos()) {
-                            $result['status'] = 1;
-                        } else {
-                            $result['error'] = 'No existen productos vendidos por el momento';
-                        }
-                        break;
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
         }
