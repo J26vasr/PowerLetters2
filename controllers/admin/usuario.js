@@ -77,20 +77,19 @@ const fillTable = async (form = null) => {
             TABLE_BODY.innerHTML += `
             <tr>
                 <td><img src="${SERVER_URL}images/usuarios/default.png" width="50"></td>
-                <td>${row.nombre}</td>
+                
                 <td>${row.nombre_usuario}</td>
-                <td>${row.correo}</td>
-                <td>${row.direccion}</td>
-                <td>${row.telefono}</td>
+                <td>${row.correo_usuario}</td>
+                <td>${row.direccion_usuario}</td>
+                <td>${row.telefono_usuario}</td>
                 <td>${estadoIcono}</td>
-                <td>${row.fecha_registro}</td>
+                <td>${row.nacimiento_usuario}</td>
                 <td class="action-icons">
                     <a onclick="openUpdate(${row.id_usuario})">
                         <i class="ri-edit-line"></i>
                     </a>
-                    
-                    <a onclick="openChart(${row.id_usuario})">
-                    <i class="ri-bar-chart-2-fill"></i>
+                    <a onclick="openUpdate(${row.id_usuario})">
+                        <i class="ri-edit-line"></i>
                     </a>
                 </td>
             </tr>
@@ -112,7 +111,7 @@ const fillTable = async (form = null) => {
 const openUpdate = async (id) => {
     // Se crea un objeto FormData con el ID del usuario.
     const FORM = new FormData();
-    FORM.append('id_usuario', id);
+    FORM.append('idUsuario', id);
     // Se realiza una petición para obtener los datos del usuario seleccionado.
     const DATA = await fetchData(USUARIO_API, 'readOne', FORM);
 

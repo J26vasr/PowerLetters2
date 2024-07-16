@@ -151,7 +151,7 @@ class UsuarioHandler
      */
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, estado_cliente, imagen
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, estado_cliente, imagen,nacimiento_usuario,telefono_usuario,direccion_usuario
                 FROM tb_usuarios
                 ORDER BY apellido_usuario';
         return Database::getRows($sql);
@@ -208,17 +208,5 @@ class UsuarioHandler
         return Database::getRow($sql, $params);
     }
 
-    // Método para gráficar el top 5 de usuarios que mas pedidos tienen
-    public function readTopProductos()
-    {
-        $sql = 'SELECT nombre_usuario, SUM(cantidad) AS total
-            FROM tb_pedidos
-            INNER JOIN tb_usuarios ON tb_pedidos.id_usuario = tb_usuarios.id_usuario
-            GROUP BY nombre_usuario
-            ORDER BY total DESC
-            LIMIT 5';
-
-        $params = array($this->id); // Revisa si $this->id es necesario aquí
-        return Database::getRows($sql, $params);
-    }
+   
 }
