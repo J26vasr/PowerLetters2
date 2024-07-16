@@ -215,6 +215,18 @@ class LibroHandler
         return Database::getRows($sql, $params);
     }
 
+    /*
+    *   Métodos para generar gráficos.
+    */
+    public function cantidadProductosEditorial()
+    {
+        $sql = 'SELECT nombre, COUNT(id_libro) cantidad
+                FROM tb_libros
+                INNER JOIN tb_editoriales USING(id_editorial)
+                GROUP BY nombre ORDER BY cantidad DESC LIMIT 5';
+        return Database::getRows($sql);
+    }
+
     public function porcentajeProductosEditorial()
     {
         $sql = 'SELECT nombre, ROUND((COUNT(id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) porcentaje

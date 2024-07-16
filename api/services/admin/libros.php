@@ -121,6 +121,13 @@ if (isset($_GET['action'])) {
                         $result['error'] = 'No hay datos disponibles';
                     }
                     break;
+                    case 'cantidadProductosEditorial':
+                        if ($result['dataset'] = $libros->cantidadProductosEditorial()) {
+                            $result['status'] = 1;
+                        } else {
+                            $result['error'] = 'No hay datos disponibles';
+                        }
+                        break;
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
         }

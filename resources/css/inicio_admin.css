@@ -1,13 +1,31 @@
- /* Ajusta el tamaño del contenedor */
- #chart-container {
-    width: 500px; /* Ajusta el ancho según tus necesidades */
-    height: 500px; /* Ajusta la altura según tus necesidades */
-    margin-top: 200px;
+
+
+/* Ajusta el tamaño del contenedor */
+#charts-container {
+    display: flex; /* Utiliza flexbox para alinear los gráficos horizontalmente */
+    justify-content: space-between; /* Ajusta el espacio entre los gráficos según tus necesidades */
+    align-items: flex-start; /* Alinea los gráficos al inicio verticalmente */
+    width: 100%; /* Ajusta el ancho del contenedor según tus necesidades */
+    margin-top: 200px; /* Ajusta el margen superior según tus necesidades */
 }
+
+#chart1 {
+    width: 500px !important;
+    height: 500px !important;
+    margin-left: 100px;
+    margin-top: -100px;
+    /* margin-right: 400px; */ /* Elimina esta línea, ya no es necesaria */
+}
+
 #chart2 {
-    width: 120% !important;
-    height: 120% !important;
+    width: 600px !important;
+    height: 600px !important;
+    margin-top: -170px;
+    margin-left: 250px;
 }
+
 .TituloGraficaP{
     margin-left: 50px;
+    font-size: 40px;
+    margin-top: 40px;
 }
