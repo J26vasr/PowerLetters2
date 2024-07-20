@@ -9,17 +9,10 @@
     margin-top: 200px; /* Ajusta el margen superior según tus necesidades */
 }
 
-#chart1 {
-    width: 500px !important;
-    height: 500px !important;
-    margin-right: 200px;
-    margin-top: -80px;
-    /* margin-right: 400px; */ /* Elimina esta línea, ya no es necesaria */
-}
 
 #chart2 {
-    width: 600px !important;
-    height: 600px !important;
+    width: 100% !important;
+    height: 100% !important;
     margin-top: -170px;
     margin-right: 300px;
 }
