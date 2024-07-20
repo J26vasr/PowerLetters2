@@ -235,4 +235,16 @@ class LibroHandler
                 GROUP BY nombre ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
+
+    public function librosMasVendidos()
+    {
+        $sql = 'SELECT l.titulo, SUM(dp.cantidad) AS totalLibros
+        FROM tb_libros l
+        INNER JOIN tb_detalle_pedidos dp ON l.id_libro = dp.id_libro
+        GROUP BY l.titulo
+        ORDER BY totalLibros DESC
+        limit 5';
+
+        return Database::getRows($sql);
+    }
 }

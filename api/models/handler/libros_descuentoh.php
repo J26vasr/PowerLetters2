@@ -124,5 +124,6 @@ class LibroDescuentoHandler
         return Database::getRow($sql, $params);
     }
 
+
 }
 
