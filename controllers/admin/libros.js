@@ -21,6 +21,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    Top5MVendidosL();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -203,5 +204,27 @@ const openDelete = async (id) => {
             sweetAlert(2, DATA.error, false);
         }
     }
+
+
+
 }
 
+const Top5MVendidosL= async() => {
+        const DATA = await fetchData(LIBRO_API, 'librosMasVendidos');
+        if(DATA.status){
+            let libros = [];
+            let  cantdadlibros = [];
+            DATA.dataset.forEach(row =>{
+            
+                libros.push(row.titulo);
+                cantdadlibros.push(row.totalLibros);
+            });
+
+            barGraph('chart4', libros, cantdadlibros, 'Cantidad vendida','TOP 5 Libros mas vendidos' );
+        }
+        else{
+            document.getElementById('chart4 ').remove();
+            console.log(DATA.error);
+        }
+
+}
