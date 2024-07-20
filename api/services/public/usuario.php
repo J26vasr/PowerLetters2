@@ -157,6 +157,14 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al cambiar la contraseña';
                 }
                 break;
+
+            case 'clienteMasCompras':
+                if ($result['dataset'] = $usuario->clienteMasCompras()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
             default:
                 $result['error'] = 'Acción no disponible dentro de la sesión';
         }
@@ -185,7 +193,7 @@ if (isset($_GET['action'])) {
                 if (!$captcha['success']) {
                     $result['recaptcha'] = 1;
                     $result['error'] = 'No eres humano';
-                } elseif(!isset($_POST['condicion'])) {
+                } elseif (!isset($_POST['condicion'])) {
                     $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
                 } elseif (
                     !$usuario->setNombre($_POST['nombre_usuario']) or
@@ -196,7 +204,7 @@ if (isset($_GET['action'])) {
                     !$usuario->setNacimiento($_POST['nacimiento_usuario']) or
                     !$usuario->setTelefono($_POST['telefono_usuario']) or
                     !$usuario->setImagen($_FILES['imagen']) or
-                    !$usuario->setClave($_POST['clave_usuario']) 
+                    !$usuario->setClave($_POST['clave_usuario'])
                 ) {
                     $result['error'] = $usuario->getDataError();
                 } elseif ($_POST['clave_usuario'] != $_POST['confirmarClave']) {
@@ -208,52 +216,52 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al registrar la cuenta';
                 }
                 break;
-                case 'signUp':
-                    $_POST = Validator::validateForm($_POST);
-                    // Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
-                    $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
-                    // Se establece la dirección IP del servidor.
-                    $ip = $_SERVER['REMOTE_ADDR'];
-                    // Se establecen los datos del reCAPTCHA.
-                    $data = array('secret' => $secretKey, 'response' => $_POST['gRecaptchaResponse'], 'remoteip' => $ip);
-                    // Se establecen las opciones del reCAPTCHA.
-                    $options = array(
-                        'http' => array('header' => 'Content-type: application/x-www-form-urlencoded\r\n', 'method' => 'POST', 'content' => http_build_query($data)),
-                        'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
-                    );
-    
-                    $url = 'https://www.google.com/recaptcha/api/siteverify';
-                    $context = stream_context_create($options);
-                    $response = file_get_contents($url, false, $context);
-                    $captcha = json_decode($response, true);
-    
-                    if (!$captcha['success']) {
-                        $result['recaptcha'] = 1;
-                        $result['error'] = 'No eres humano';
-                    } elseif(!isset($_POST['condicion'])) {
-                        $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
-                    } elseif (
-                        !$usuario->setNombre($_POST['nombre_usuario']) or
-                        !$usuario->setApellido($_POST['apellido_usuario']) or
-                        !$usuario->setCorreo($_POST['correo_usuario']) or
-                        !$usuario->setDireccion($_POST['direccion_usuario']) or
-                        !$usuario->setDUI($_POST['dui_usuario']) or
-                        !$usuario->setNacimiento($_POST['nacimiento_usuario']) or
-                        !$usuario->setTelefono($_POST['telefono_usuario']) or
-                        !$usuario->setImagen($_FILES['imagen']) or
-                        !$usuario->setClave($_POST['clave_usuario']) 
-                    ) {
-                        $result['error'] = $usuario->getDataError();
-                    } elseif ($_POST['clave_usuario'] != $_POST['confirmarClave']) {
-                        $result['error'] = 'Contraseñas diferentes';
-                    } elseif ($usuario->createRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Cuenta registrada correctamente';
-                    } else {
-                        $result['error'] = 'Ocurrió un problema al registrar la cuenta';
-                    }
-                    break;
-                    case 'signUpMovil':
+            case 'signUp':
+                $_POST = Validator::validateForm($_POST);
+                // Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
+                $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
+                // Se establece la dirección IP del servidor.
+                $ip = $_SERVER['REMOTE_ADDR'];
+                // Se establecen los datos del reCAPTCHA.
+                $data = array('secret' => $secretKey, 'response' => $_POST['gRecaptchaResponse'], 'remoteip' => $ip);
+                // Se establecen las opciones del reCAPTCHA.
+                $options = array(
+                    'http' => array('header' => 'Content-type: application/x-www-form-urlencoded\r\n', 'method' => 'POST', 'content' => http_build_query($data)),
+                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
+                );
+
+                $url = 'https://www.google.com/recaptcha/api/siteverify';
+                $context = stream_context_create($options);
+                $response = file_get_contents($url, false, $context);
+                $captcha = json_decode($response, true);
+
+                if (!$captcha['success']) {
+                    $result['recaptcha'] = 1;
+                    $result['error'] = 'No eres humano';
+                } elseif (!isset($_POST['condicion'])) {
+                    $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
+                } elseif (
+                    !$usuario->setNombre($_POST['nombre_usuario']) or
+                    !$usuario->setApellido($_POST['apellido_usuario']) or
+                    !$usuario->setCorreo($_POST['correo_usuario']) or
+                    !$usuario->setDireccion($_POST['direccion_usuario']) or
+                    !$usuario->setDUI($_POST['dui_usuario']) or
+                    !$usuario->setNacimiento($_POST['nacimiento_usuario']) or
+                    !$usuario->setTelefono($_POST['telefono_usuario']) or
+                    !$usuario->setImagen($_FILES['imagen']) or
+                    !$usuario->setClave($_POST['clave_usuario'])
+                ) {
+                    $result['error'] = $usuario->getDataError();
+                } elseif ($_POST['clave_usuario'] != $_POST['confirmarClave']) {
+                    $result['error'] = 'Contraseñas diferentes';
+                } elseif ($usuario->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cuenta registrada correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al registrar la cuenta';
+                }
+                break;
+            case 'signUpMovil':
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$usuario->setNombre($_POST['nombre_usuario']) or
@@ -264,7 +272,7 @@ if (isset($_GET['action'])) {
                     !$usuario->setNacimiento($_POST['nacimiento_usuario']) or
                     !$usuario->setTelefono($_POST['telefono_usuario']) or
                     !$usuario->setImagen($_FILES['imagen']) or
-                    !$usuario->setClave($_POST['clave_usuario']) 
+                    !$usuario->setClave($_POST['clave_usuario'])
                 ) {
                     $result['error'] = $usuario->getDataError();
                 } elseif ($_POST['clave_usuario'] != $_POST['confirmarClave']) {

@@ -13,6 +13,7 @@ const ESTADO_CLIENTE = document.getElementById('estado_cliente'); // Campo para 
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    graficaClientesCompras();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -129,45 +130,25 @@ const openUpdate = async (id) => {
         sweetAlert(2, DATA.exception, false);
     }
 
-    
-function openMODALG() {
-    var modal = document.getElementById("modalG");
-    modal.style.display = "block";
 }
 
-/*
-*   Función asíncrona para mostrar un gráfico parametrizado.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
 
-const openChart = async (id) => {
-    
-    openMODALG();
-     // Se define una constante tipo objeto con los datos del registro seleccionado.
-     const FORM = new FormData();
-     FORM.append('id_pedido', id);
-     // Petición para obtener los datos del registro solicitado.
-     const DATA = await fetchData(PEDIDO_API, 'readTopProductos', FORM);
-     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con el error.
-     if (DATA.status) {
-         // Se muestra la caja de diálogo con su título.
-         CHART_MODAL.show();
-         // Se declaran los arreglos para guardar los datos a graficar.
-         let usuario = [];
-         let unidades = [];
-         // Se recorre el conjunto de registros fila por fila a través del objeto row.
-         DATA.dataset.forEach(row => {
-             // Se agregan los datos a los arreglos.
-             usuario.push(row.titulo);
-             unidades.push(row.total);
-         });
-         // Se agrega la etiqueta canvas al contenedor de la modal.
-         document.getElementById('chartContainer').innerHTML = `<canvas id="chart"></canvas>`;
-         // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
-         barGraph('chart', usuario, unidades, 'Cantidad de productos', 'Top 5 de productos con más unidades vendidas');
-     } else {
-         sweetAlert(4, DATA.error, true);
-     }
-}
+
+const graficaClientesCompras= async() => {
+    const DATA = await fetchData(USUARIO_API, 'clienteMasCompras');
+    if(DATA.status){
+        let cliente = [];
+        let cantidadCompras = [];
+
+        DATA.dataset.forEach(row =>{
+            cliente.push(row.nombre_usuario);
+            cantidadCompras.push(row.totalCompras);
+        });
+        barGraph('chart', cliente, cantidadCompras, 'Cantidad compras');
+    }
+    else{
+        document.getElementById('chart').remove();
+        console.log(DATA.error);
+    }
+
 }

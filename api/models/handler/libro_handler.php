@@ -243,7 +243,7 @@ class LibroHandler
         INNER JOIN tb_detalle_pedidos dp ON l.id_libro = dp.id_libro
         GROUP BY l.titulo
         ORDER BY totalLibros DESC
-        limit 5';
+        LIMIT 5';
 
         return Database::getRows($sql);
     }

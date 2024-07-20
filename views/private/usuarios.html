@@ -23,7 +23,8 @@
             <!-- Formulario de búsqueda y botón de agregar -->
             <form id="searchForm" class="search-container">
                 <div class="search-form" id="search_generos">
-                    <input type="search" name="search" class="search-input" placeholder="Buscar por nombre, usuario del cliente o correo...">
+                    <input type="search" name="search" class="search-input"
+                        placeholder="Buscar por nombre, usuario del cliente o correo...">
                     <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
             </form>
@@ -50,6 +51,16 @@
                 </tbody>
             </table>
         </div>
+
+
+        <div id="charts-container">
+
+        
+            <h1 id="Titulo">TOP 5 LIBROS MAS VENDIDOS</h1>
+            <canvas class="chart" id="chart"></canvas>
+
+        </div>
+
         <!-- Modal -->
         <div id="myModal" class="modal">
             <div class="modal-background"></div>
@@ -76,7 +87,11 @@
         </div>
 
 
+
     </main>
+
+    <!-- Importación de la librería para generar los gráficos. Para más información https://www.chartjs.org/ -->
+    <script type="text/javascript" src="../../resources/js/chart.umd.min.js"></script>
 
     <!--=============== SWIPER JS ===============-->
     <script src="../../resources/js/swiper-bundle.min.js"></script>
