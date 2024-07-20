@@ -1,4 +1,30 @@
- /* Estilo específico para la tabla */
+/*DISEÑO DE LA GRAFICA*****************************************/
+
+/* Ajusta el tamaño del contenedor */
+#charts-container {
+  
+  justify-content: center; /* Ajusta el espacio entre los gráficos según tus necesidades */
+  align-items: flex-start; /* Alinea los gráficos al inicio verticalmente */
+  width: 70%; /* Ajusta el ancho del contenedor según tus necesidades */
+  margin-top: 200px; /* Ajusta el margen superior según tus necesidades */
+}
+
+.chart4 {
+  width: 600px !important;
+  height: 800px !important;
+  margin-left: 500px;
+  margin-top: -80px;
+  /* margin-right: 400px; */ /* Elimina esta línea, ya no es necesaria */
+}
+#Titulo{
+  font-size: 30px;
+  margin-bottom: 100px ;
+  margin-left: 550px ;
+}
+
+
+
+/* Estilo específico para la tabla */
  .table {
    width: 100%;
    border-collapse: collapse;

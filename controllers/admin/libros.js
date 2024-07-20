@@ -220,7 +220,7 @@ const Top5MVendidosL= async() => {
                 cantdadlibros.push(row.totalLibros);
             });
 
-            barGraph('chart4', libros, cantdadlibros, 'Cantidad vendida','TOP 5 Libros mas vendidos' );
+            barGraph('chart4', libros, cantdadlibros, 'Cantidad vendida');
         }
         else{
             document.getElementById('chart4 ').remove();
