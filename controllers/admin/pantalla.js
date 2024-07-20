@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 *   Retorno: ninguno.
 */
 
-const graficoBarrasCategorias = async () => {
+/*const graficoBarrasCategorias = async () => {
     // Petición para obtener los datos del gráfico.
     const DATA = await fetchData(LIBRO_API, 'cantidadProductosEditorial');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
@@ -36,6 +36,7 @@ const graficoBarrasCategorias = async () => {
         console.log(DATA.error);
     }
 }
+*/
 
 const graficoPastelEditoriales = async () => {
     // Petición para obtener los datos del gráfico.
