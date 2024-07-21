@@ -210,7 +210,7 @@ class UsuarioHandler
     
     public function clienteMasCompras()
     {
-        $sql ='SELECT c.nombre_usuario, COUNT(p.id_pedido) AS totalCompras
+        $sql ='SELECT c.nombre_usuario, SUM(p.id_pedido) AS totalCompras
         FROM tb_usuarios c
         INNER JOIN tb_pedidos p ON c.id_usuario = p.id_usuario
         GROUP BY c.nombre_usuario
