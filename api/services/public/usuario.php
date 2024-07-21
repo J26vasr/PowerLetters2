@@ -65,10 +65,27 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Usuario inexistente';
                 }
                 break;
+
+                case 'changeStatus':
+                    $_POST = Validator::validateForm($_POST);
+                    if (
+                        !$usuario->setId($_POST['id_usuario']) or
+                        
+                        !$usuario->setEstado($_POST['estado_cliente'])
+                        
+                    ) {
+                        $result['error'] = $usuario->getDataError();
+                    } elseif ($usuario->changeStatus()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Usuario modificado correctamente';
+                    } else {
+                        $result['error'] = 'Ocurrió un problema al modificar el usuario';
+                    }
+                    break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$usuario->setId($_POST['idUsuario']) or
+                    !$usuario->setId($_POST['id_usuario']) or
                     !$usuario->setNombre($_POST['nombre_usuario']) or
                     !$usuario->setApellido($_POST['apellido_usuario']) or
                     !$usuario->setCorreo($_POST['correo_usuario']) or
@@ -86,6 +103,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el usuario';
                 }
                 break;
+               
             case 'deleteRow':
                 if ($_POST['idUsuario'] == $_SESSION['idUsuario']) {
                     $result['error'] = 'No se puede eliminar a sí mismo';

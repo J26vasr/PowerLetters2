@@ -33,7 +33,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se crea un objeto FormData con los datos del formulario de guardado.
     const FORM = new FormData(SAVE_FORM);
     // Se realiza una petición para actualizar el registro del usuario.
-    const DATA = await fetchData(USUARIO_API, 'updateRow', FORM);
+    const DATA = await fetchData(USUARIO_API, 'changeStatus', FORM);
 
     // Se comprueba si la respuesta es satisfactoria.
     if (DATA.status) {
@@ -89,9 +89,7 @@ const fillTable = async (form = null) => {
                     <a onclick="openUpdate(${row.id_usuario})">
                         <i class="ri-edit-line"></i>
                     </a>
-                    <a onclick="openUpdate(${row.id_usuario})">
-                        <i class="ri-edit-line"></i>
-                    </a>
+                    
                 </td>
             </tr>
             `;
