@@ -79,10 +79,10 @@ const fillTable = async (form = null) => {
                     </div>
                 </td>
                 <td class="action-icons">
-                    <a onclick="viewDetails(${row.id_pedido})">
+                    <a onclick="viewDetails(${row.id_detalle})">
                     <i class="ri-eye-fill"></i>
                     </a>
-                    <a onclick="openUpdate(${row.id_pedido})">
+                    <a onclick="openUpdate(${row.id_detalle})">
                     <i class="ri-edit-line"></i>
                     </a>
                    
@@ -98,16 +98,11 @@ const fillTable = async (form = null) => {
 
 }
 
-function openMODALG() {
-    var modal = document.getElementById("modalG");
-    modal.style.display = "block";
-}
-
-
 const openUpdate = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id_pedido', id);
+    console.log(id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(PEDIDO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -135,12 +130,15 @@ const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id_pedido', id);
+    console.log(id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(PEDIDO_API, 'readOne', FORM);
+    AbrirModalVista();
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
+
         AbrirModalVista();
         MODAL_TITLE.textContent = 'Detalle del pedido';
         // Actualizar los elementos del modal con la información del libro
@@ -152,6 +150,8 @@ const viewDetails = async (id) => {
         document.getElementById('direccionPedido').innerText = ROW.direccion_pedido;
         document.getElementById('Estado').innerText = ROW.estado;
         document.getElementById('Fecha').innerText = ROW.fecha_pedido;
+
+
     } else {
         sweetAlert(2, DATA.error, false);
     }

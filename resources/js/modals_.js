@@ -1,5 +1,4 @@
 var modal = document.getElementById("myModal");
-var MODAL = document.getElementById("modalG");
 var modal_ = document.getElementById("myModalView");
 var MODAL_TITLE = document.getElementById("modalTitle");
 var btn = document.querySelector(".add-button");
@@ -8,8 +7,6 @@ var btn = document.querySelector(".add-button");
 modal.style.display = "none";
 // Ocultar el modal al cargar la página
 modal_.style.display = "none";
-// Ocultar el modal al cargar la página
-MODAL.style.display = "none";
 
 // Abrir el modal al hacer click en el botón de añadir
 function  AbrirModal() {
@@ -30,11 +27,6 @@ function closeModalDetalles() {
     modal_.style.display = "none";
 }
 
-
-function closeMODALG() {
-    var modal = document.getElementById("modalG");
-    modal.style.display = "none";
-}
 
 
 

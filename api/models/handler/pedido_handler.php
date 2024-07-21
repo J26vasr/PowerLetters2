@@ -281,7 +281,7 @@ class PedidoHandler
                 LEFT JOIN
                     tb_comentarios AS c ON dp.id_detalle = c.id_detalle
                 WHERE
-                    p.id_pedido = ?';
+                    dp.id_detalle = ?';
 
         // Establecer los parámetros para la consulta (id)
         $params = array($this->id);

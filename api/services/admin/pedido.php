@@ -34,26 +34,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'createRow': // Acción para crear un nuevo pedido.
-                $_POST = Validator::validateForm($_POST);
-
-                // Validar y establecer los campos necesarios para crear un pedido.
-                if (
-                    !$pedido->setId($_POST['id_pedido']) or
-                    !$pedido->setIdUsuario($_POST['usuario']) or
-                    !$pedido->setDireccion($_POST['direccion']) ||
-                    !$pedido->setEstado(isset($_POST['estadoProducto']) ? 1 : 0) ||
-                    !$pedido->setFecha($_POST['fecha']) ||
-                    !$pedido->setIdDetalle($_POST['detalle'])
-                ) {
-                    $result['error'] = $pedido->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($pedido->createRow()) { // Intentar crear un nuevo pedido.
-                    $result['status'] = 1; // Indicar que la operación fue exitosa.
-                    $result['message'] = 'Pedido creado con éxito';
-                } else {
-                    $result['error'] = 'Ocurrió un problema al crear el pedido'; // Mensaje de error si ocurre un problema.
-                }
-                break;
+          
 
             case 'readAll':
                 // Implementación del caso readAll
