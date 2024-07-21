@@ -226,6 +226,7 @@ class PedidoHandler
                 p.fecha_pedido,
                 dp.id_detalle,
                 dp.id_libro,
+                l.titulo,
                 dp.cantidad,
                 dp.precio,
                 c.id_comentario,
@@ -239,9 +240,11 @@ class PedidoHandler
             LEFT JOIN
                 tb_detalle_pedidos AS dp ON p.id_pedido = dp.id_pedido
             LEFT JOIN
+                tb_libros AS l ON dp.id_libro = l.id_libro
+            LEFT JOIN
                 tb_comentarios AS c ON dp.id_detalle = c.id_detalle
-            ORDER BY
-                p.fecha_pedido;';
+            
+            ORDER BY dp.id_detalle DESC';
 
         // Ejecutar la consulta y devolver las filas resultantes
         return Database::getRows($sql);
