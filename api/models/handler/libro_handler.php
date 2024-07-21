@@ -247,4 +247,18 @@ class LibroHandler
 
         return Database::getRows($sql);
     }
+
+    
+    public function reporteLibrosE()
+    {
+        $sql = 'SELECT l.titulo, l.descripcion, l.existencias, l.precio
+                FROM tb_libros l
+                INNER JOIN tb_editoriales e ON l.id_editorial = e.id_editorial
+                WHERE e.id_editorial = ?
+                ORDER BY l.titulo';
+    
+        $params = array($this->editorial);
+        return Database::getRows($sql, $params);
+    }
+    
 }

@@ -9,7 +9,7 @@ require_once('../../libraries/fpdf185/fpdf.php');
 class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
-    const CLIENT_URL = 'http://localhost/NewPowerLetters/Views/Private/';
+    const CLIENT_URL = 'http://localhost/NewPowerLetters/views/private/';
     // Propiedad para guardar el título del reporte.
     private $title = null;
 
@@ -56,7 +56,8 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
-        $this->image('../../../imagenes/logo.png', 15, 15, 20);
+        $this->image('../../images/logo.png', 15, 15, 20);
+        $this->image('../../images/fondoReporte.png', 0, 0, 215.9, 279.4);
         // Se ubica el título.
         $this->cell(20);
         $this->setFont('Arial', 'B', 15);
@@ -82,4 +83,6 @@ class Report extends FPDF
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
     }
+
+
 }

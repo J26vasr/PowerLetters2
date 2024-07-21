@@ -228,3 +228,16 @@ const Top5MVendidosL= async() => {
         }
 
 }
+
+/*
+*   Función para abrir un reporte automático de productos por marca.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+const openReportbrands = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/libros_editorial.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}
+ 

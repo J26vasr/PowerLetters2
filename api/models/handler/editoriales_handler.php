@@ -12,6 +12,7 @@ class EditorialesHandler
      */
     protected $id = null;
     protected $nombre = null;
+    
 
     /*
      * Método para buscar registros en la tabla tb_editoriales.
