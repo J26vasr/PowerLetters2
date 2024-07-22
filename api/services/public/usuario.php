@@ -66,22 +66,30 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-                case 'changeStatus':
-                    $_POST = Validator::validateForm($_POST);
-                    if (
-                        !$usuario->setId($_POST['id_usuario']) or
-                        
-                        !$usuario->setEstado($_POST['estado_cliente'])
-                        
-                    ) {
-                        $result['error'] = $usuario->getDataError();
-                    } elseif ($usuario->changeStatus()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Usuario modificado correctamente';
-                    } else {
-                        $result['error'] = 'Ocurrió un problema al modificar el usuario';
-                    }
-                    break;
+            case 'changeStatus':
+                $_POST = Validator::validateForm($_POST);
+                if (
+                    !$usuario->setId($_POST['id_usuario']) or
+
+                    !$usuario->setEstado($_POST['estado_cliente'])
+
+                ) {
+                    $result['error'] = $usuario->getDataError();
+                } elseif ($usuario->changeStatus()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Usuario modificado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al modificar el usuario';
+                }
+                break;
+
+            case 'GraficaUsuariosEstados':
+                if ($result['dataset'] = $usuario->GraficaUsuariosEstados()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
@@ -103,7 +111,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el usuario';
                 }
                 break;
-               
+
             case 'deleteRow':
                 if ($_POST['idUsuario'] == $_SESSION['idUsuario']) {
                     $result['error'] = 'No se puede eliminar a sí mismo';

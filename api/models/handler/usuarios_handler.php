@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once ('../../helpers/database.php');
+require_once('../../helpers/database.php');
 /*
  *	Clase para manejar el comportamiento de los datos de la tabla usuario.
  */
@@ -106,7 +106,7 @@ class UsuarioHandler
         $params = array($this->nombre, $this->apellido, $this->correo, $this->dui, $this->telefono, $this->nacimiento, $this->direccion, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }
-    
+
     /*
      *   Métodos para cambiar el estado
      */
@@ -133,7 +133,7 @@ class UsuarioHandler
         $params = array($value, $value, $value);
         return Database::getRows($sql, $params);
     }
-    
+
     /*
      *   Métodos para crear usuarios
      */
@@ -156,7 +156,7 @@ class UsuarioHandler
                 ORDER BY apellido_usuario';
         return Database::getRows($sql);
     }
-    
+
     /*
      *   Métodos para leer solo uno
      */
@@ -207,10 +207,10 @@ class UsuarioHandler
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-    
+
     public function clienteMasCompras()
     {
-        $sql ='SELECT c.nombre_usuario, SUM(p.id_pedido) AS totalCompras
+        $sql = 'SELECT c.nombre_usuario, SUM(p.id_pedido) AS totalCompras
         FROM tb_usuarios c
         INNER JOIN tb_pedidos p ON c.id_usuario = p.id_usuario
         GROUP BY c.nombre_usuario
@@ -218,4 +218,19 @@ class UsuarioHandler
         LIMIT 5';
         return Database::getRows($sql);
     }
+
+    // Función para obtener la cantidad de usuarios conectados y desconectados
+    public function GraficaUsuariosEstados()
+    {
+        $sql = 'SELECT nombre_usuario,
+    CASE
+        WHEN estado_cliente = 1 THEN "Activos"
+        ELSE "Inactivos"
+    END AS estado,
+    COUNT(*) AS cantidad
+FROM tb_usuarios
+GROUP BY estado_cliente;';
+        return Database::getRows($sql);
+    }
 }
+
