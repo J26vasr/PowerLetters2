@@ -259,4 +259,12 @@ color: var(--text-color);
   margin-left: 600px ;
 }
 
+.add-buttonR i {
+  font-size: 34px;
+  line-height: 24px;
+}
+.reporte {
+  margin-left: 1150px;
+}
+
 

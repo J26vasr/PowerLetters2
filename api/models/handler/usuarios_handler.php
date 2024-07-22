@@ -222,7 +222,7 @@ class UsuarioHandler
     // Función para obtener la cantidad de usuarios conectados y desconectados
     public function GraficaUsuariosEstados()
     {
-        $sql = 'SELECT nombre_usuario,
+        $sql = 'SELECT
     CASE
         WHEN estado_cliente = 1 THEN "Activos"
         ELSE "Inactivos"
@@ -232,5 +232,18 @@ FROM tb_usuarios
 GROUP BY estado_cliente;';
         return Database::getRows($sql);
     }
+
+    public function reporteClientesA()
+    {
+        $sql = 'SELECT nombre_usuario, correo_usuario,
+                CASE
+                    WHEN estado_cliente = 1 THEN "Activos"
+                    ELSE "Inactivos"
+                END AS estado
+                FROM tb_usuarios';
+    
+        return Database::getRows($sql);
+    }
+    
 }
 

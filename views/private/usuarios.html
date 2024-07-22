@@ -26,6 +26,8 @@
                     <input type="search" name="search" class="search-input"
                         placeholder="Buscar por nombre, usuario del cliente o correo...">
                     <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+
+            
                 </div>
             </form>
 
@@ -52,10 +54,15 @@
             </table>
         </div>
 
+        <button class="add-buttonR" onclick="openReportbrands()"><i
+            class="ri-contacts-book-upload-line"></i></button>
+
+
+
 
         <div id="charts-container">
 
-        
+
             <h1 id="Titulo">TOP 5 CLIENTES CON MAS COMPRAS</h1>
             <canvas class="chart" id="chart"></canvas>
 
@@ -80,7 +87,7 @@
                             </select>
                         </div>
                         <br><br>
-                        <button type="submit" class="genero__button button" >Guardar</button>
+                        <button type="submit" class="genero__button button">Guardar</button>
                     </form>
                 </div>
             </div>
