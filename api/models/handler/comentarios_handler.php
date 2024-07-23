@@ -144,4 +144,28 @@ class ComentarioHandler
         // Ejecutar la consulta y devolver el resultado
         return Database::getRows($sql);
     }
+
+    public function reporteComentario()
+    {
+        $sql = 'SELECT
+    u.id_usuario,
+    u.nombre_usuario,  -- Suponiendo que hay un campo de nombre de usuario en la tabla tb_usuarios
+    c.id_comentario,
+    c.comentario,
+    c.calificacion
+    FROM
+        tb_usuarios u
+    JOIN
+        tb_pedidos p ON u.id_usuario = p.id_usuario
+    JOIN
+        tb_detalle_pedidos dp ON p.id_pedido = dp.id_pedido
+    JOIN
+        tb_comentarios c ON dp.id_detalle = c.id_detalle
+    WHERE
+        c.estado_comentario = "ACTIVO";  -- Opcional: para seleccionar solo comentarios activos
+    ';
+    
+        $params = array($this->comentario);
+        return Database::getRows($sql, $params);
+    }
 }
