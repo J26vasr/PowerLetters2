@@ -34,23 +34,23 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'createRow': // Acción para crear un nuevo comentario.
-                $_POST = Validator::validateForm($_POST);
+            // case 'createRow': // Acción para crear un nuevo comentario.
+            //     $_POST = Validator::validateForm($_POST);
 
-                // Validar y establecer los campos necesarios para crear un comentario.
-                if (
-                    !$comentario->setId($_POST['id_comentario']) or
-                    !$comentario->setComentario($_POST['comentario']) or
-                    !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0)
-                ) {
-                    $result['error'] = $comentario->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($comentario->createRow()) { // Intentar crear un nuevo comentario.
-                    $result['status'] = 1; // Indicar que la operación fue exitosa.
-                    $result['message'] = 'Comentario creado con éxito';
-                } else {
-                    $result['error'] = 'Ocurrió un problema al crear el comentario'; // Mensaje de error si ocurre un problema.
-                }
-                break;
+            //     // Validar y establecer los campos necesarios para crear un comentario.
+            //     if (
+            //         !$comentario->setId($_POST['id_comentario']) or
+            //         !$comentario->setComentario($_POST['comentario']) or
+            //         !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0)
+            //     ) {
+            //         $result['error'] = $comentario->getDataError(); // Obtener mensaje de error si la validación falla.
+            //     } elseif ($comentario->createRow()) { // Intentar crear un nuevo comentario.
+            //         $result['status'] = 1; // Indicar que la operación fue exitosa.
+            //         $result['message'] = 'Comentario creado con éxito';
+            //     } else {
+            //         $result['error'] = 'Ocurrió un problema al crear el comentario'; // Mensaje de error si ocurre un problema.
+            //     }
+            //     break; Lito 
             case 'readAll':
                 if ($result['dataset'] = $comentario->readAll()) {
                     $result['status'] = 1;
@@ -90,6 +90,13 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
                 }
                 break;
+                case 'topLibrosValorados':
+                    if ($result['dataset'] = $comentario->topLibrosValorados()) {
+                        $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    } else {
+                        $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
+                    }
+                    break;
 
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
