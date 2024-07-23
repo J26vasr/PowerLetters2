@@ -13,6 +13,7 @@ class ClasificacionHandler
     protected $id = null;
     protected $nombre = null;
     protected $descripcion = null;
+    protected $clasificacion = null;
 
     /*
      * Método para buscar registros en la tabla tb_clasificaciones.
@@ -96,5 +97,18 @@ class ClasificacionHandler
         $params = array($this->id);
         // Ejecutar la consulta y devolver el resultado
         return Database::executeRow($sql, $params);
+    }
+    
+    /*
+    *   Métodos para generar reportes.
+    */
+    public function librosClasificacion()
+    {
+        $sql = 'SELECT l.titulo, l.precio, l.existencias
+                from tb_libros l 
+                inner join tb_clasificaciones  using(id_clasificacion)
+                where l.id_clasificacion=?';
+        $params = array($this->clasificacion);
+        return Database::getRows($sql, $params);
     }
 }

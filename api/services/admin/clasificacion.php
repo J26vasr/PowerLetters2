@@ -106,6 +106,16 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al eliminar clasificación'; // Mensaje de error si ocurre un problema.
                 }
                 break;
+                case 'readproductosMarca':
+                    // Acción que muestre todos los datos 
+                    if (!$clasificacion->setId($_POST['idClas'])) {
+                        $result['error'] = $clasificacion->getDataError();
+                    } elseif ($result['dataset'] = $clasificacion->librosClasificacion()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['error'] = 'Clasificación inexistente';
+                    }
+                    break;
 
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.

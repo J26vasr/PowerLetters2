@@ -177,3 +177,10 @@ const topLibrosValorados = async () => {
         console.log(DATA.error);
     }
 }
+const openReportbrandsC = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/comentarios_reporte.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}
+ 
