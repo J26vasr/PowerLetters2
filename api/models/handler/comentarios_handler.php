@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once ('../../helpers/database.php');
+require_once('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla COMENTARIOS.
@@ -130,5 +130,18 @@ class ComentarioHandler
 
         // Ejecutar la consulta y devolver el resultado
         return Database::executeRow($sql, $params);
+    }
+    public function topLibrosValorados()
+    {
+        // Definir la consulta SQL para graficar los mejores libros caificados
+        $sql = 'SELECT l.id_libro, l.titulo, c.calificacion
+                  FROM tb_libros l
+                  JOIN tb_detalle_pedidos dp ON l.id_libro = dp.id_libro
+                  JOIN tb_comentarios c ON dp.id_detalle = c.id_detalle
+                  WHERE c.calificacion = 5
+                  LIMIT 5;';
+
+        // Ejecutar la consulta y devolver el resultado
+        return Database::getRows($sql);
     }
 }

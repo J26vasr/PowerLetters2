@@ -4,7 +4,7 @@
     flex-wrap: wrap; /* Permite que los gráficos se envuelvan en pantallas pequeñas */
     justify-content: center; /* Centra los gráficos horizontalmente */
     align-items: flex-start; /* Alinea los gráficos al inicio verticalmente */
-    margin-top: 150px; /* Ajusta el margen superior según necesidades */
+    margin-top: 50px; /* Ajusta el margen superior según necesidades */
 }
 
 /* Estilos para cada gráfico individual */
