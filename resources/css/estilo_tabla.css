@@ -283,4 +283,38 @@ color: var(--text-color);
   margin-left: 1150px;
 }
 
+/* Contenedor principal para los gráficos */
+#charts-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los gráficos se envuelvan en pantallas pequeñas */
+  justify-content: center; /* Centra los gráficos horizontalmente */
+  align-items: flex-start; /* Alinea los gráficos al inicio verticalmente */
+  margin-top: 50px; /* Ajusta el margen superior según necesidades */
+}
+
+/* Estilos para cada gráfico individual */
+.chart-container {
+  width: calc(50% - 20px); /* Ancho del 50% del contenedor menos el espacio entre gráficos */
+  max-width: 600px; /* Ancho máximo del gráfico */
+  margin: 10px; /* Espacio entre los gráficos */
+  justify-content: center;
+  align-items: center;
+  margin-left: 500px;
+}
+
+.chart {
+  width: 100%;
+  height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
+  border: 1px solid #ccc; /* Borde opcional para los gráficos */
+}
+
+
+.TituloGraficaP2 {
+  text-align: center; /* Centra el título horizontalmente */
+  font-size: 30px;
+  margin-top: 20px; /* Ajusta el margen superior según necesidades */
+}
+
+
+
 

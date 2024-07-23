@@ -16,6 +16,7 @@ const SAVE_FORM = document.getElementById('saveForm'), // Formulario para guarda
 // Event listener que se ejecuta cuando el contenido del DOM ha sido completamente cargado.
 document.addEventListener('DOMContentLoaded', () => {
     fillTable(); // Llama a la función fillTable para llenar la tabla con los comentarios.
+    topLibrosValorados();
 });
 
 // Método del evento para cuando se envía el formulario de búsqueda.
@@ -153,5 +154,26 @@ const viewDetails = async (id) => {
     } else {
         // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
+    }
+}
+const topLibrosValorados = async () => {
+    // Petición para obtener los datos del gráfico.
+    const DATA = await fetchData(COMENTARIO_API, 'topLibrosValorados');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (DATA.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let titulol = [];
+        let calificacionc = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        DATA.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            titulol.push(row.titulo);
+            calificacionc.push(row.calificacion);
+        });
+        // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
+        barGraph('chartComentario', titulol, calificacionc, 'Calificación', '');
+    } else {
+        document.getElementById('chartComentario').remove();
+        console.log(DATA.error);
     }
 }
