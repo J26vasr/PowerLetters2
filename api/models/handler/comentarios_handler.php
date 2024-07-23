@@ -149,8 +149,7 @@ class ComentarioHandler
     {
         $sql = 'SELECT
     u.id_usuario,
-    u.nombre_usuario,  -- Suponiendo que hay un campo de nombre de usuario en la tabla tb_usuarios
-    c.id_comentario,
+    u.nombre_usuario,    c.id_comentario,
     c.comentario,
     c.calificacion
     FROM
@@ -162,8 +161,7 @@ class ComentarioHandler
     JOIN
         tb_comentarios c ON dp.id_detalle = c.id_detalle
     WHERE
-        c.estado_comentario = "ACTIVO";  -- Opcional: para seleccionar solo comentarios activos
-    ';
+        c.estado_comentario = "ACTIVO";     ';
     
         $params = array($this->comentario);
         return Database::getRows($sql, $params);

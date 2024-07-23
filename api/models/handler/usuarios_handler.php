@@ -244,6 +244,5 @@ GROUP BY estado_cliente;';
     
         return Database::getRows($sql);
     }
-
 }
 
