@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cantidad.push(row.cantidad);
         });
         // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
-        barGraph('chart8', estado, cantidad, 'Cantidad usuarios ', '');
+        barGraph('chart10', estado, cantidad, 'Cantidad usuarios ', '');
     } else {
-        document.getElementById('chart8').remove();
+        document.getElementById('chart10').remove();
         console.log(DATA.error);
     }
 }

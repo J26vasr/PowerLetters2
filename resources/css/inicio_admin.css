@@ -1,24 +1,35 @@
-
-
-/* Ajusta el tamaño del contenedor */
+/* Contenedor principal para los gráficos */
 #charts-container {
-    display: flex; /* Utiliza flexbox para alinear los gráficos horizontalmente */
-    justify-content: space-between; /* Ajusta el espacio entre los gráficos según tus necesidades */
+    display: flex;
+    flex-wrap: wrap; /* Permite que los gráficos se envuelvan en pantallas pequeñas */
+    justify-content: center; /* Centra los gráficos horizontalmente */
     align-items: flex-start; /* Alinea los gráficos al inicio verticalmente */
-    width: 100%; /* Ajusta el ancho del contenedor según tus necesidades */
-    margin-top: 200px; /* Ajusta el margen superior según tus necesidades */
+    margin-top: 150px; /* Ajusta el margen superior según necesidades */
+}
+
+/* Estilos para cada gráfico individual */
+.chart-container {
+    width: calc(50% - 20px); /* Ancho del 50% del contenedor menos el espacio entre gráficos */
+    max-width: 600px; /* Ancho máximo del gráfico */
+    margin: 10px; /* Espacio entre los gráficos */
+   
+}
+
+.chart {
+    width: 100%;
+    height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
+    border: 1px solid #ccc; /* Borde opcional para los gráficos */
 }
 
 
-#chart2 {
-    width: 100% !important;
-    height: 100% !important;
-    margin-top: -170px;
-    margin-right: 300px;
+.TituloGraficaP2 {
+    text-align: center; /* Centra el título horizontalmente */
+    font-size: 30px;
+    margin-top: 20px; /* Ajusta el margen superior según necesidades */
 }
 
 .TituloGraficaP{
-    margin-left: 50px;
+    text-align: center; /* Centra el título horizontalmente */
     font-size: 30px;
-    margin-top: 150px;
+    margin-top: 20px; /* Ajusta el margen superior según necesidades */
 }
