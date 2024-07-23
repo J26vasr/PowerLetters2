@@ -309,7 +309,7 @@ color: var(--text-color);
 }
 
 
-.TituloGraficaP2 {
+.Titulo{
   text-align: center; /* Centra el título horizontalmente */
   font-size: 30px;
   margin-top: 20px; /* Ajusta el margen superior según necesidades */
