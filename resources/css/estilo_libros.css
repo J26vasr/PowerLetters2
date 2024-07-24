@@ -147,13 +147,11 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .add-buttonR2 {
-  padding: 7px 16px;
-  margin-right: 200px;
-  margin-top: 30px;
-  background-color: var(--first-color);
-  /* Cambia al color que desees */
+  padding: 7px 16px; /* Ajusta el padding según sea necesario */
+  margin-right: 900px; /* Reduce el margen derecho para mover el botón hacia la izquierda */
+  margin-top: 20px; /* Agrega margen inferior para mover el botón hacia arriba */
+  background-color: var(--first-color); /* Cambia al color que desees */
   color: #fff;
   border: none;
   border-radius: 5px;

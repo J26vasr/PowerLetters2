@@ -151,6 +151,7 @@ const barGraph = (canvas, xAxis, yAxis, legend, title) => {
 *   Retorno: ninguno.
 */
 const pieGraph = (canvas, legends, values, title) => {
+  
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
@@ -159,7 +160,7 @@ const pieGraph = (canvas, legends, values, title) => {
     });
     // Se crea una instancia para generar el gráfico con los datos recibidos.
     new Chart(document.getElementById(canvas), {
-        type: 'pie',
+        type: 'doughnut',
         data: {
             labels: legends,
             datasets: [{
