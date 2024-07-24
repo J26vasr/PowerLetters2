@@ -332,7 +332,8 @@ class PedidoHandler
             u.nombre_usuario AS NombreUsuario,
             l.titulo AS TituloLibro,
             p.estado AS EstadoPedido,
-            SUM(dp.cantidad) AS CantidadLibros
+            SUM(dp.cantidad) AS CantidadLibros,
+            (dp.precio * dp.cantidad) AS subtotal
         FROM
             tb_pedidos p
         JOIN
@@ -364,6 +365,7 @@ class PedidoHandler
     l.titulo AS titulo_libro, 
     dp.cantidad AS cantidad_pedido, 
     dp.precio AS precio_pedido
+    (dp.precio * dp.cantidad) AS subtotal
 FROM 
     tb_pedidos p
 INNER JOIN 
