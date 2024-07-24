@@ -99,16 +99,5 @@ class ClasificacionHandler
         return Database::executeRow($sql, $params);
     }
     
-    /*
-    *   Métodos para generar reportes.
-    */
-    public function librosClasificacion()
-    {
-        $sql = 'SELECT l.titulo, l.precio, l.existencias
-                from tb_libros l 
-                inner join tb_clasificaciones  using(id_clasificacion)
-                where l.id_clasificacion=?';
-        $params = array($this->clasificacion);
-        return Database::getRows($sql, $params);
-    }
+   
 }

@@ -267,10 +267,11 @@ class LibroHandler
     */
     public function librosClasificacion()
     {
-        $sql = 'SELECT l.titulo, l.precio, l.existencias
-                from tb_libros l 
-                inner join tb_clasificaciones  using(id_clasificacion)
-                where l.id_clasificacion=?';
+        $sql = 'SELECT l.titulo, l.descripcion, l.existencias, l.precio
+                FROM tb_libros l
+                INNER JOIN tb_clasificaciones c ON l.id_clasificacion = c.id_clasificacion
+                WHERE c.id_clasificacion = ?
+                ORDER BY l.titulo';
         $params = array($this->clasificacion);
         return Database::getRows($sql, $params);
     }
