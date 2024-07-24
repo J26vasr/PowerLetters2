@@ -148,22 +148,26 @@ class ComentarioHandler
     public function reporteComentario()
     {
         $sql = 'SELECT
-    u.id_usuario,
-    u.nombre_usuario,    c.id_comentario,
-    c.comentario,
-    c.calificacion
-    FROM
-        tb_usuarios u
-    JOIN
-        tb_pedidos p ON u.id_usuario = p.id_usuario
-    JOIN
-        tb_detalle_pedidos dp ON p.id_pedido = dp.id_pedido
-    JOIN
-        tb_comentarios c ON dp.id_detalle = c.id_detalle
-    WHERE
-        c.estado_comentario = "ACTIVO";     ';
-    
-        $params = array($this->comentario);
-        return Database::getRows($sql, $params);
+            u.nombre_usuario,    
+            c.comentario,
+            c.calificacion,
+            l.titulo,
+            l.id_libro
+        FROM
+            tb_usuarios u
+        JOIN
+            tb_pedidos p ON u.id_usuario = p.id_usuario
+        JOIN
+            tb_detalle_pedidos dp ON p.id_pedido = dp.id_pedido
+        JOIN
+            tb_libros l ON dp.id_libro = l.id_libro
+        JOIN
+            tb_comentarios c ON dp.id_detalle = c.id_detalle
+        WHERE
+            c.estado_comentario = "ACTIVO"
+        ORDER BY
+            l.id_libro, u.nombre_usuario'; // Ordenar para facilitar la agrupación de datos
+        return Database::getRows($sql);
     }
+    
 }

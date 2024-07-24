@@ -25,6 +25,7 @@ class UsuarioData extends UsuarioHandler
             return false;
         }
     }
+    
 
     public function setNombre($value, $min = 2, $max = 50)
     {
