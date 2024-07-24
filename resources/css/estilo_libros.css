@@ -147,6 +147,24 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
+.add-buttonR2 {
+  padding: 7px 16px;
+  margin-right: 200px;
+  margin-top: 30px;
+  background-color: var(--first-color);
+  /* Cambia al color que desees */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-buttonR2 i {
+  font-size: 34px;
+  line-height: 24px;
+}
 .add-buttonR i {
   font-size: 34px;
   line-height: 24px;
