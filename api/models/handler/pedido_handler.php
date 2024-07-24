@@ -324,4 +324,33 @@ class PedidoHandler
                 GROUP BY nombre_usuario ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
+
+
+    public function reportePedido()
+    {
+        $sql = 'SELECT
+            u.nombre_usuario AS NombreUsuario,
+            l.titulo AS TituloLibro,
+            p.estado AS EstadoPedido,
+            SUM(dp.cantidad) AS CantidadLibros
+        FROM
+            tb_pedidos p
+        JOIN
+            tb_usuarios u ON p.id_usuario = u.id_usuario
+        JOIN
+            tb_detalle_pedidos dp ON p.id_pedido = dp.id_pedido
+        JOIN
+            tb_libros l ON dp.id_libro = l.id_libro
+        WHERE
+            p.estado = "ENTREGADO"
+        GROUP BY
+            u.nombre_usuario, l.titulo, p.estado
+        ORDER BY
+            u.nombre_usuario, l.titulo
+        LIMIT 10;';
+    
+        return Database::getRows($sql);
+    }
+    
+    
 }

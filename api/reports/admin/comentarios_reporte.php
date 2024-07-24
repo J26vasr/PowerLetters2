@@ -37,7 +37,7 @@ if ($dataLibros = $libros->readAll()) {
                 }
             }
             if (!$hasComments) {
-                $pdf->Cell(190, 10, 'Libro sin comentarios o inexistente', 1, 1);
+                $pdf->Cell(180, 10, 'Libro sin comentarios o inexistente', 1, 1);
             }
         }
     } else {

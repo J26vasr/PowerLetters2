@@ -18,6 +18,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    openReportbrands();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -157,12 +158,14 @@ const viewDetails = async (id) => {
         sweetAlert(2, DATA.error, false);
     }
 }
-
-
-
-
 /*
-*   Función asíncrona para mostrar un gráfico parametrizado.
-*   Parámetros: id (identificador del registro seleccionado).
+*   Función para abrir un reporte automático de productos por marca.
+*   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
+const openReportbrands = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/pedidos_estado.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}
