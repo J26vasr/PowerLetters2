@@ -11,12 +11,12 @@ if (isset($_GET['idPedido'])) {
     require_once('../../models/data/pedido_data.php');
     // require_once('../../models/data/productos_data.php');
     // Se instancian las entidades correspondientes.
-    $historial = new PedidoData;
+    $pedido = new PedidoData;
  
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
-    if ($historial->setId($_GET['idPedido'])) {
+    if ($pedido->setId($_GET['idPedido'])) {
  
-        if ($rowPedido = $historial->reporteHistorial()) {
+        if ($rowPedido = $pedido->reporteHistorial()) {
  
  
             // Se inicia el reporte con el encabezado del documento.

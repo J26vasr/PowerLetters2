@@ -228,21 +228,23 @@ class UsuarioHandler
         ELSE "Inactivos"
     END AS estado,
     COUNT(*) AS cantidad
-FROM tb_usuarios
-GROUP BY estado_cliente;';
+    FROM tb_usuarios
+    GROUP BY estado_cliente;';
         return Database::getRows($sql);
     }
 
-    public function reporteClientesA()
+    public function reporteClientesA($estado_cliente)
     {
         $sql = 'SELECT nombre_usuario, correo_usuario,
                 CASE
                     WHEN estado_cliente = 1 THEN "Activos"
                     ELSE "Inactivos"
                 END AS estado
-                FROM tb_usuarios';
+                FROM tb_usuarios
+                WHERE estado_cliente = :estado_cliente';
     
-        return Database::getRows($sql);
+        $params = [':estado_cliente' => $estado_cliente];
+        return Database::getRows($sql, $params);
     }
+    
 }
-
