@@ -7,6 +7,7 @@ const HISTORIAL_BODY = document.getElementById('historialBody');
 // Evento que se dispara cuando el DOM ha sido completamente cargado.
 document.addEventListener('DOMContentLoaded', () => {
     loadHistorial(); // Llama a la función para cargar el historial de pedidos.
+    openReportbrands();
 });
 
 // Función asíncrona para cargar el historial de pedidos.
@@ -63,4 +64,10 @@ async function viewDetails(idPedido) {
         // Si la petición no fue exitosa, muestra un mensaje de error.
         sweetAlert(4, DATA.error, false);
     }
+}
+const openReportbrands = () => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/public/comprobante.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
 }
