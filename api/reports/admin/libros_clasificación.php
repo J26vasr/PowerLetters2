@@ -22,7 +22,7 @@ if ($dataClasificacion = $clasificacion->readAll()) {
     // Recorremos las editoriales obtenidas
     foreach ($dataClasificacion as $rowClasificacion) {
         $pdf->SetFont('Times', 'B', 11);
-        $pdf->Cell(180, 10, 'Nombre de la editorial: ' . $pdf->encodeString($rowClasificacion['nombre']), 1, 1, 'C', 1);
+        $pdf->Cell(180, 10, $pdf->encodeString('Nombre de la clasificación: ') . $pdf->encodeString($rowClasificacion['nombre']), 1, 1, 'C', 1);
         
         // Creamos una instancia del modelo de Libro para procesar los datos
         $libros = new LibroData;
@@ -66,18 +66,18 @@ if ($dataClasificacion = $clasificacion->readAll()) {
             } else {
                 // Mensaje si no hay libros para la editorial
                 $pdf->SetFont('Arial', '', 10);
-                $pdf->Cell(180, 10, 'No hay libros para esta editorial', 1, 1, 'C');
+                $pdf->Cell(180, 10, 'No hay libros para esta clasificación', 1, 1, 'C');
             }
         } else {
             // Mensaje si la editorial es incorrecta o inexistente
             $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(190, 10, 'Editorial incorrecta o inexistente', 1, 1, 'C');
+            $pdf->Cell(190, 10, 'Clasificación incorrecta o inexistente', 1, 1, 'C');
         }
     }
 } else {
     // Mensaje si no hay editoriales para mostrar
     $pdf->SetFont('Arial', '', 10);
-    $pdf->Cell(190, 10, 'No hay editoriales para mostrar', 1, 1, 'C');
+    $pdf->Cell(190, 10, 'No hay clasificación para mostrar', 1, 1, 'C');
 }
 
  // Se llama implícitamente al método footer() y se envía el documento al navegador web.

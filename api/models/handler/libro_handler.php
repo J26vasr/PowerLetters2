@@ -275,5 +275,15 @@ class LibroHandler
         $params = array($this->clasificacion);
         return Database::getRows($sql, $params);
     }
+
+    
+    public function porcentajeLibrosAutores()
+    {
+        $sql = 'SELECT nombre, ROUND((COUNT(id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) porcentaje
+                FROM tb_libros
+                INNER JOIN tb_autores USING(id_autor)
+                GROUP BY nombre ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
     
 }

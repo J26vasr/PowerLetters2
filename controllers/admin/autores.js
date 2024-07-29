@@ -1,5 +1,6 @@
 // Constantes para completar las rutas de la API.
 const AUTORES_API = 'services/admin/autores.php';
+const LIBRO_API = 'services/admin/libros.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
@@ -17,6 +18,9 @@ document.querySelector('title').textContent = 'Autores de libros';
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
+    
+// Llamar a la función para dibujar el gráfico
+porcentajeLibrosAutores();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
@@ -157,5 +161,74 @@ const openDelete = async (id) => {
         } else {
             sweetAlert(2, DATA.error, false);
         }
+    }
+}
+const porcentajeLibrosAutores = async () => {
+    try {
+        // Petición para obtener los datos del gráfico.
+        const DATA = await fetchData(LIBRO_API, 'porcentajeLibrosAutores');
+        console.log(DATA); // Verifica los datos recibidos
+
+        // Se comprueba si la respuesta es satisfactoria
+        if (DATA.status) {
+            let autor = [];
+            let porcentajes = [];
+            
+            DATA.dataset.forEach(row => {
+                autor.push(row.nombre);
+                porcentajes.push(row.porcentaje);
+            });
+
+            // Obtener el contexto del canvas
+            const ctx = document.getElementById('chart12');
+            if (!ctx) {
+                console.error('No se encontró el elemento canvas con ID "chart12"');
+                return;
+            }
+            const chartContext = ctx.getContext('2d');
+
+            // Crear el nuevo gráfico de pastel
+            window.myPieChart = new Chart(chartContext, {
+                type: 'pie',
+                data: {
+                    labels: autor,
+                    datasets: [{
+                        data: porcentajes,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: false,
+                        }
+                    }
+                }
+            });
+        } else {
+            console.error(DATA.error); // Muestra el error en la consola
+        }
+    } catch (error) {
+        console.error('Error al obtener los datos:', error); // Manejo de errores
     }
 }

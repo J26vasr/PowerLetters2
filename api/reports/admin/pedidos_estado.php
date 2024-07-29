@@ -28,7 +28,7 @@ if ($dataLibros = $libros->readAll()) {
                 $entryKey = $rowPedido['TituloLibro'] . '|' . $rowPedido['NombreUsuario'] . '|' . $rowPedido['CantidadLibros'];
                 
                 if (!isset($printedEntries[$entryKey])) {
-                    $pdf->SetFont('Arial', '', 10);
+                    $pdf->SetFont('Times', 'B', 10);
                     $pdf->Cell(40, 10, $pdf->encodeString($rowPedido['NombreUsuario']), 1, 0, 'L');
                     $pdf->Cell(80, 10, $pdf->encodeString($rowPedido['TituloLibro']), 1, 0, 'L');
                     $pdf->Cell(30, 10, $rowPedido['EstadoPedido'], 1, 0, 'C');
@@ -40,7 +40,7 @@ if ($dataLibros = $libros->readAll()) {
         }
     }
 } else {
-    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetFont('Times', '', 10);
     $pdf->Cell(190, 10, 'No hay libros para mostrar', 1, 1, 'C');
 }
 

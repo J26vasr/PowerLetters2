@@ -6,7 +6,7 @@ require_once('../../models/data/libros_data.php');
  
 $pdf = new Report;
  
-$pdf->startReport('Comentarios por cliente');
+$pdf->startReport('Comentarios por libros');
  
 $libros = new LibroData;
  
@@ -28,7 +28,7 @@ if ($dataLibros = $libros->readAll()) {
             $hasComments = false;
             foreach ($dataComentarios as $rowComentario) {
                 if ($rowComentario['id_libro'] == $rowLibros['id_libro']) {
-                    $pdf->SetFont('Arial', '', 10);
+                    $pdf->SetFont('Times', 'B', 10);
                     $pdf->Cell(60, 10, $pdf->encodeString($rowComentario['titulo']), 1, 0, 'L');
                     $pdf->Cell(30, 10, $pdf->encodeString($rowComentario['nombre_usuario']), 1, 0, 'L');
                     $pdf->Cell(70, 10, $pdf->encodeString($rowComentario['comentario']), 1, 0, 'L');
@@ -44,7 +44,7 @@ if ($dataLibros = $libros->readAll()) {
         $pdf->Cell(190, 10, 'No hay comentarios para mostrar', 1, 1, 'C');
     }
 } else {
-    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetFont('Times', 'B', 10);
     $pdf->Cell(190, 10, 'No hay libros para mostrar', 1, 1, 'C');
 }
  
