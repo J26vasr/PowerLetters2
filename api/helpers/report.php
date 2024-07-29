@@ -82,7 +82,8 @@ class Report extends FPDF
         $this->setY(-15);
         // Se establece la fuente para el número de página.
         $this->setFont('Times', 'I', 8);
-        // Se imprime una celda con el número de página.
+        // Se imprime una celda con el número de página SE CENTRA EL TEXTO DEL FOOTER.
+        
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
     }
 

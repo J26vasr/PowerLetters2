@@ -227,6 +227,9 @@ class LibroHandler
         return Database::getRows($sql);
     }
 
+      /*
+    *   Métodos para generar gráficos.
+    */
     public function porcentajeProductosEditorial()
     {
         $sql = 'SELECT nombre, ROUND((COUNT(id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) porcentaje
@@ -236,6 +239,9 @@ class LibroHandler
         return Database::getRows($sql);
     }
 
+      /*
+    *   Métodos para generar gráficos.
+    */
     public function librosMasVendidos()
     {
         $sql = 'SELECT l.titulo, SUM(dp.cantidad) AS totalLibros
@@ -248,7 +254,9 @@ class LibroHandler
         return Database::getRows($sql);
     }
 
-    
+      /*
+    *   Métodos para generar reportes.
+    */
     public function reporteLibrosE()
     {
         $sql = 'SELECT l.titulo, l.descripcion, l.existencias, l.precio
@@ -263,7 +271,7 @@ class LibroHandler
 
     
     /*
-    *   Métodos para generar reportes.
+    *   Métodos para generar reportes .
     */
     public function librosClasificacion()
     {
@@ -275,7 +283,12 @@ class LibroHandler
         $params = array($this->clasificacion);
         return Database::getRows($sql, $params);
     }
-
+  /*
+    *   redonde el conteo del id libro y lo multiplica por 10 y luego selecciona el conteo del id libro.
+    */
+     /*
+    *Función de grafica para libros por autores
+     */
     
     public function porcentajeLibrosAutores()
     {
