@@ -78,7 +78,6 @@ class Report extends FPDF
     public function footer()
     {
         $this->cell(0, 10, "Reporte generado por el usuario : ' ".$this->encodeString($_SESSION['aliasAdministrador']) . " ' ", 0, 0, 'C');
-
         // Se establece la posición para el número de página (a 15 milímetros del final).
         $this->setY(-15);
         // Se establece la fuente para el número de página.

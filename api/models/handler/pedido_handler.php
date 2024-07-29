@@ -354,32 +354,29 @@ class PedidoHandler
     }
     public function reporteHistorial()
     {
-        $sql = 'SELECT 
-    p.id_pedido, 
-    p.fecha_pedido, 
-    u.nombre_usuario, 
-    u.apellido_usuario, 
-    u.correo_usuario, 
-    p.direccion_pedido AS direccion_pedido, 
-    dp.id_libro, 
-    l.titulo AS titulo_libro, 
-    dp.cantidad AS cantidad_pedido, 
-    dp.precio AS precio_pedido
-    (dp.precio * dp.cantidad) AS subtotal
-FROM 
-    tb_pedidos p
-INNER JOIN 
-    tb_usuarios u ON p.id_usuario = u.id_usuario
-INNER JOIN 
-    tb_detalle_pedidos dp ON p.id_pedido = dp.id_pedido
-INNER JOIN 
-    tb_libros l ON dp.id_libro = l.id_libro
-WHERE 
-    p.id_pedido = ?;
-';
+        $sql = 'SELECT
+            u.nombre_usuario AS NombreUsuario,
+            l.titulo AS TituloLibro,
+            p.estado AS EstadoPedido,
+            p.fecha_pedido AS FechaPedido,
+            SUM(dp.cantidad) AS CantidadLibros,
+            (dp.precio * dp.cantidad) AS subtotal
+        FROM
+            tb_pedidos p
+        JOIN
+            tb_usuarios u ON p.id_usuario = u.id_usuario
+        JOIN
+            tb_detalle_pedidos dp ON p.id_pedido = dp.id_pedido
+        JOIN
+            tb_libros l ON dp.id_libro = l.id_libro
+        WHERE
+            p.estado = "FINALIZADO"
+        GROUP BY
+            u.nombre_usuario, l.titulo, p.estado
+        ORDER BY
+            u.nombre_usuario, l.titulo
+        LIMIT 10;';
 
-        $params = array($this->id); // Suponiendo que $this->id contiene el ID del pedido que deseas consultar
-
-        return Database::getRows($sql, $params);
+        return Database::getRows($sql);
     }
 }
