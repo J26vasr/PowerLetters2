@@ -134,11 +134,12 @@ class ComentarioHandler
     public function topLibrosValorados()
     {
         // Definir la consulta SQL para graficar los mejores libros caificados
-        $sql = 'SELECT l.id_libro, l.titulo, c.calificacion
+        $sql = 'SELECT l.titulo, AVG(c.calificacion) promedio
                   FROM tb_libros l
                   JOIN tb_detalle_pedidos dp ON l.id_libro = dp.id_libro
                   JOIN tb_comentarios c ON dp.id_detalle = c.id_detalle
-                  WHERE c.calificacion = 5
+                  group by l.titulo
+                  ORDER BY promedio DESC
                   LIMIT 5;';
 
         // Ejecutar la consulta y devolver el resultado

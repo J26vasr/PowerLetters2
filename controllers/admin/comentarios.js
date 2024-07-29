@@ -168,7 +168,7 @@ const topLibrosValorados = async () => {
         DATA.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
             titulol.push(row.titulo);
-            calificacionc.push(row.calificacion);
+            calificacionc.push(row.promedio);
         });
         // Llamada a la función para generar y mostrar un gráfico de líneas. Se encuentra en el archivo components.js
         barGraph('chartComentario', titulol, calificacionc, 'Calificación', '');
