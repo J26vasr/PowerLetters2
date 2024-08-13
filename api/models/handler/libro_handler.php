@@ -235,7 +235,8 @@ class LibroHandler
         $sql = 'SELECT nombre, ROUND((COUNT(id_libro) * 100.0 / (SELECT COUNT(id_libro) FROM tb_libros)), 2) porcentaje
                 FROM tb_libros
                 INNER JOIN tb_editoriales USING(id_editorial)
-                GROUP BY nombre ORDER BY porcentaje DESC';
+                GROUP BY nombre ORDER BY porcentaje DESC
+                LIMIT 5';
         return Database::getRows($sql);
     }
 
