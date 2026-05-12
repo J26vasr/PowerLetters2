@@ -72,7 +72,7 @@ class ComentarioHandlerPublic
 
     public function readOneComent()
     {
-        $sql = 'SELECT c.id_comentario, c.comentario,
+        $sql = 'SELECT c.idc_omentario, c.comentario,
     c.calificacion,
     c.estado_comentario,
     u.nombre_usuario,

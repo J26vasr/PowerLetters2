@@ -57,13 +57,18 @@ class AdministradorHandler
 
     // Método para cambiar la contraseña.
     public function changePassword()
-    {
-        $sql = 'UPDATE administrador
-                SET clave_administrador = ?
-                WHERE id_administrador = ?';
-        $params = array($this->clave, $_SESSION['idAdministrador']);
-        return Database::executeRow($sql, $params); // Ejecuta la actualización de la contraseña.
-    }
+{
+    $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+
+    $sql = 'UPDATE administrador
+            SET clave_administrador = ?
+            WHERE id_administrador = ?';
+
+    $params = array($hash, $_SESSION['idAdministrador']);
+
+    return Database::executeRow($sql, $params);
+}
+
 
     // Método para leer el perfil del administrador.
     public function readProfile()
@@ -103,12 +108,24 @@ class AdministradorHandler
 
     // Método para crear un nuevo administrador.
     public function createRow()
-    {
-        $sql = 'INSERT INTO administrador(nombre_administrador, apellido_administrador, correo_administrador, alias_administrador, clave_administrador)
-                VALUES(?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->apellido, $this->correo, $this->alias, $this->clave);
-        return Database::executeRow($sql, $params); // Ejecuta la inserción de un nuevo administrador.
-    }
+{
+    $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+
+    $sql = 'INSERT INTO administrador
+            (nombre_administrador, apellido_administrador, correo_administrador, alias_administrador, clave_administrador)
+            VALUES(?, ?, ?, ?, ?)';
+            
+    $params = array(
+        $this->nombre,
+        $this->apellido,
+        $this->correo,
+        $this->alias,
+        $hash
+    );
+
+    return Database::executeRow($sql, $params);
+}
+
 
     // Método para leer todos los administradores.
     public function readAll()
