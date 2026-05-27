@@ -21,37 +21,37 @@ const loadTemplate = async () => {
                         <div class="nav__menu">
                             <ul class="nav__list">
                                 <li class="nav__item">
-                                    <a href="../Private/inicio_admin.html" class="nav__link active-link">
+                                    <a href="../private/inicio_admin.html" class="nav__link active-link">
                                         <i class="ri-home-line"></i>
                                         <span>Inicio</span>
                                     </a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="../Private/libros.html" class="nav__link">
+                                    <a href="../private/libros.html" class="nav__link">
                                         <i class="ri-book-3-line"></i>
                                         <span>Libros</span>
                                     </a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="../Private/generos.html" class="nav__link">
+                                    <a href="../private/generos.html" class="nav__link">
                                         <i class="ri-book-mark-line"></i>
                                         <span>Géneros</span>
                                     </a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="../Private/pedidos.html" class="nav__link">
+                                    <a href="../private/pedidos.html" class="nav__link">
                                         <i class="ri-shopping-cart-line"></i>
                                         <span>Pedidos</span>
                                     </a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="../Private/comentarios.html" class="nav__link">
+                                    <a href="../private/comentarios.html" class="nav__link">
                                         <i class="ri-message-3-line"></i>
                                         <span>Comentarios</span>
                                     </a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="../Private/usuarios.html" class="nav__link">
+                                    <a href="../private/usuarios.html" class="nav__link">
                                         <i class="ri-user-line"></i>
                                         <span>Clientes</span>
                                     </a>
@@ -63,9 +63,9 @@ const loadTemplate = async () => {
                                         <i class="ri-arrow-down-s-line dropdown-icon"></i>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="../Private/autores.html">Autores</a></li>
-                                        <li><a href="../Private/clasificacion.html">Clasificaciones</a></li>
-                                        <li><a href="../Private/editoriales.html">Editoriales</a></li>
+                                        <li><a href="../private/autores.html">Autores</a></li>
+                                        <li><a href="../private/clasificacion.html">Clasificaciones</a></li>
+                                        <li><a href="../private/editoriales.html">Editoriales</a></li>
                                     </ul>
                                 </li>
                                 <i class="ri-user-line login-button" id="login-button"></i>

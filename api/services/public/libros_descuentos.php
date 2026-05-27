@@ -44,7 +44,7 @@ if (isset($_GET['action'])) {
             break;
 
         case 'readOne':
-            if (!$librosdes->setId($_POST['id_libro'])) {
+            if (!$librosdes->setId($_POST['idLibro'] ?? $_POST['id_libro'] ?? null)) {
                 $result['error'] = $librosdes->getDataError();
             } elseif ($result['dataset'] = $librosdes->readOne()) {
                 $result['status'] = 1;

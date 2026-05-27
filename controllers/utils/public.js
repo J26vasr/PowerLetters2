@@ -24,19 +24,19 @@ const loadTemplate = async () => {
                     <div class="nav__menu">
                         <ul class="nav__list">
                             <li class="nav__item">
-                                <a href="../Public/index.html" class="nav__link active-link">
+                                <a href="../public/index.html" class="nav__link active-link">
                                     <i class="ri-home-line"></i>
                                     <span>Inicio</span>
                                 </a>
                             </li>
                             <li class="nav__item">
-                                <a href="../Public/descuento.html" class="nav__link">
+                                <a href="../public/descuento.html" class="nav__link">
                                     <i class="ri-bookmark-line"></i>
                                     <span>Libros nuevos</span>
                                 </a>
                             </li>
                             <li class="nav__item">
-                                <a href="../Public/libros_recomendados.html" class="nav__link">
+                                <a href="../public/libros_recomendados.html" class="nav__link">
                                     <i class="ri-book-3-line"></i>
                                     <span>Recomendados</span>
                                 </a>
@@ -113,19 +113,19 @@ const loadTemplate = async () => {
                 <div class="nav__menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="../Public/index.html" class="nav__link active-link">
+                            <a href="../public/index.html" class="nav__link active-link">
                                 <i class="ri-home-line"></i>
                                 <span>Inicio</span>
                             </a>
                         </li>
                         <li class="nav__item">
-                            <a href="../Public/descuento.html" class="nav__link">
+                            <a href="../public/descuento.html" class="nav__link">
                                 <i class="ri-bookmark-line"></i>
                                 <span>Libros nuevos</span>
                             </a>
                         </li>
                         <li class="nav__item">
-                            <a href="../Public/libros_recomendados.html" class="nav__link">
+                            <a href="../public/libros_recomendados.html" class="nav__link">
                                 <i class="ri-book-3-line"></i>
                                 <span>Recomendados</span>
                             </a>
@@ -155,12 +155,12 @@ const loadTemplate = async () => {
                      
                         <div class="login__group grid">
                             <div>
-                                <label for="login-email" class="login__label">Correo</label>
-                                <input type="email" placeholder="Escribe tu correo electrónico" id="correo_usuario" class="login__input">
+                                <label for="header-login-email" class="login__label">Correo</label>
+                                <input type="email" placeholder="Escribe tu correo electrónico" id="header-login-email" class="login__input">
                             </div>
                             <div>
-                                <label for="login-pass" class="login__label">Contraseña</label>
-                                <input type="password" placeholder="Escribe tu contraseña" id="clave_usuario" class="login__input">
+                                <label for="header-login-pass" class="login__label">Contraseña</label>
+                                <input type="password" placeholder="Escribe tu contraseña" id="header-login-pass" class="login__input">
                             </div>
                         </div>
                         <div>

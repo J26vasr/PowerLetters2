@@ -1,0 +1,632 @@
+/* Hermes widget. Paleta brand del sitio. */
+:root {
+    --h-bg:           hsl(0, 0%, 100%);
+    --h-bg-soft:      hsl(230, 100%, 98%);
+    --h-bg-sunken:    hsl(230, 100%, 96%);
+    --h-border:       hsl(230, 50%, 90%);
+    --h-border-soft:  hsl(230, 50%, 94%);
+    --h-text:         hsl(230, 70%, 16%);
+    --h-text-soft:    hsl(230, 16%, 45%);
+    --h-text-faint:   hsl(230, 16%, 62%);
+    --h-accent:       hsl(230, 62%, 56%);
+    --h-accent-soft:  hsl(230, 62%, 48%);
+    --h-accent-tint:  hsl(230, 100%, 96%);
+    --h-user-bubble:  hsl(230, 62%, 56%);
+    --h-user-text:    #ffffff;
+    --h-bot-bubble:   hsl(230, 100%, 97%);
+    --h-success:      hsl(142, 71%, 38%);
+    --h-warn:         hsl(38, 92%, 50%);
+    --h-error:        hsl(0, 72%, 51%);
+    --h-shadow-md:    0 4px 16px hsla(230, 60%, 30%, 0.10);
+    --h-shadow-lg:    0 18px 50px hsla(230, 60%, 30%, 0.18);
+    --h-font:         "Montserrat", -apple-system, BlinkMacSystemFont,
+                      "Inter", "Segoe UI", system-ui, sans-serif;
+    --h-radius:       12px;
+}
+
+/* Trigger button */
+#hermes-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    height: 44px;
+    padding: 0 16px 0 12px;
+    border-radius: 22px;
+    background: var(--h-accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--h-shadow-md);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--h-font);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+#hermes-fab:hover  { transform: translateY(-1px); box-shadow: var(--h-shadow-lg); }
+#hermes-fab svg    { width: 16px; height: 16px; }
+#hermes-fab .icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#hermes-fab .icon svg { width: 16px; height: 16px; }
+
+/* Panel */
+#hermes-panel {
+    position: fixed;
+    bottom: 84px;
+    right: 24px;
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    height: 680px;
+    max-height: calc(100vh - 120px);
+    background: var(--h-bg);
+    border: 1px solid var(--h-border);
+    border-radius: var(--h-radius);
+    box-shadow: var(--h-shadow-lg);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: var(--h-font);
+    font-size: 13.5px;
+    color: var(--h-text);
+    transform-origin: bottom right;
+    animation: hermes-pop 0.2s ease-out;
+}
+#hermes-panel.open { display: flex; }
+@keyframes hermes-pop {
+    from { opacity: 0; transform: scale(0.97) translateY(6px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Header (tipo barra de app) */
+#hermes-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px 10px 14px;
+    border-bottom: 1px solid var(--h-border);
+    background: var(--h-bg);
+    flex-shrink: 0;
+}
+#hermes-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+#hermes-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: var(--h-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+    letter-spacing: -0.04em;
+}
+#hermes-brand .name {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: var(--h-text);
+}
+#hermes-brand .meta {
+    font-size: 11px;
+    color: var(--h-text-soft);
+    letter-spacing: 0.01em;
+}
+
+.hermes-header-btn {
+    background: transparent;
+    border: none;
+    color: var(--h-text-soft);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.hermes-header-btn:hover { background: var(--h-bg-sunken); color: var(--h-text); }
+.hermes-header-btn svg   { width: 16px; height: 16px; }
+
+/* Messages stream */
+#hermes-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--h-bg);
+    scroll-behavior: smooth;
+}
+#hermes-messages::-webkit-scrollbar          { width: 6px; }
+#hermes-messages::-webkit-scrollbar-track    { background: transparent; }
+#hermes-messages::-webkit-scrollbar-thumb    { background: #e4e4e7; border-radius: 3px; }
+#hermes-messages::-webkit-scrollbar-thumb:hover { background: #c4c4c7; }
+
+.hermes-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: hermes-fade-in 0.2s ease-out;
+}
+.hermes-row.user { align-items: flex-end; }
+@keyframes hermes-fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hermes-bubble {
+    max-width: 88%;
+    padding: 9px 13px;
+    border-radius: 12px;
+    line-height: 1.5;
+    font-size: 13.5px;
+    word-wrap: break-word;
+}
+.hermes-row.user .hermes-bubble {
+    background: var(--h-user-bubble);
+    color: var(--h-user-text);
+    border-bottom-right-radius: 4px;
+}
+.hermes-row.assistant .hermes-bubble {
+    background: var(--h-bot-bubble);
+    color: var(--h-text);
+    border-bottom-left-radius: 4px;
+}
+.hermes-row.error {
+    align-items: center;
+}
+.hermes-row.error .hermes-bubble {
+    background: #fef2f2;
+    color: var(--h-error);
+    border: 1px solid #fecaca;
+    font-size: 12.5px;
+    max-width: 95%;
+    text-align: center;
+}
+
+.hermes-bubble p          { margin: 0 0 6px; }
+.hermes-bubble p:last-child { margin-bottom: 0; }
+.hermes-bubble strong     { font-weight: 600; }
+.hermes-bubble em         { font-style: italic; }
+.hermes-bubble ul         { margin: 4px 0 4px 18px; padding: 0; }
+.hermes-bubble code {
+    background: rgba(0,0,0,0.07);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: ui-monospace, "SF Mono", monospace;
+}
+
+/* Typing indicator */
+.hermes-thinking {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    background: var(--h-bot-bubble);
+    border-radius: 12px;
+    border-bottom-left-radius: 4px;
+    width: fit-content;
+    font-size: 12.5px;
+    color: var(--h-text-soft);
+}
+.hermes-thinking .dots { display: flex; gap: 3px; }
+.hermes-thinking .dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--h-text-faint);
+    animation: hermes-bounce 1.2s infinite;
+}
+.hermes-thinking .dots span:nth-child(2) { animation-delay: 0.15s; }
+.hermes-thinking .dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes hermes-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ARTIFACTS */
+.hermes-artifact {
+    margin-top: 2px;
+}
+.hermes-artifact-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--h-text-soft);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.hermes-artifact-title::before {
+    content: '';
+    width: 12px;
+    height: 1px;
+    background: var(--h-text-faint);
+}
+
+/* book grid */
+.hermes-book-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+.hermes-book {
+    display: flex;
+    gap: 12px;
+    padding: 10px;
+    border: 1px solid var(--h-border);
+    border-radius: 10px;
+    background: var(--h-bg);
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+.hermes-book:hover { border-color: var(--h-accent); background: var(--h-bg-soft); }
+.hermes-book__cover {
+    width: 56px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: var(--h-bg-sunken);
+    flex-shrink: 0;
+}
+.hermes-book__cover.no-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--h-text-faint);
+    font-size: 18px;
+    border: 1px dashed var(--h-border);
+}
+.hermes-book__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+.hermes-book__title {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--h-text);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+.hermes-book__author {
+    font-size: 12px;
+    color: var(--h-text-soft);
+}
+.hermes-book__meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--h-text-soft);
+}
+.hermes-book__price {
+    font-weight: 600;
+    color: var(--h-text);
+    font-size: 13px;
+}
+.hermes-book__stock-low { color: var(--h-warn); }
+.hermes-book__stock-out { color: var(--h-error); }
+.hermes-book__actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
+.hermes-btn {
+    border: 1px solid var(--h-border);
+    background: var(--h-bg);
+    color: var(--h-text);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--h-font);
+    cursor: pointer;
+    transition: background 0.12s ease, border-color 0.12s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.hermes-btn:hover { background: var(--h-bg-sunken); border-color: var(--h-accent); }
+.hermes-btn--primary {
+    background: var(--h-accent);
+    border-color: var(--h-accent);
+    color: #fff;
+}
+.hermes-btn--primary:hover { background: var(--h-accent-soft); border-color: var(--h-accent-soft); }
+.hermes-btn--danger {
+    color: var(--h-error);
+}
+.hermes-btn--danger:hover { background: #fef2f2; border-color: #fecaca; }
+.hermes-btn svg { width: 12px; height: 12px; }
+
+/* cart panel */
+.hermes-cart {
+    border: 1px solid var(--h-border);
+    border-radius: 10px;
+    background: var(--h-bg);
+    overflow: hidden;
+}
+.hermes-cart__header {
+    padding: 10px 12px;
+    background: var(--h-bg-soft);
+    border-bottom: 1px solid var(--h-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--h-text);
+    letter-spacing: -0.01em;
+}
+.hermes-cart__count {
+    font-weight: 400;
+    color: var(--h-text-soft);
+}
+.hermes-cart__items {
+    display: flex;
+    flex-direction: column;
+}
+.hermes-cart__item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--h-border-soft);
+    font-size: 13px;
+}
+.hermes-cart__item:last-child { border-bottom: none; }
+.hermes-cart__title {
+    color: var(--h-text);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hermes-cart__qty {
+    color: var(--h-text-soft);
+    font-size: 12px;
+}
+.hermes-cart__price {
+    color: var(--h-text);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+.hermes-cart__footer {
+    padding: 10px 12px;
+    background: var(--h-bg-soft);
+    border-top: 1px solid var(--h-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hermes-cart__total-label { font-size: 12px; color: var(--h-text-soft); }
+.hermes-cart__total {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--h-text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+
+/* order confirmation */
+.hermes-order-confirmed {
+    border: 1px solid var(--h-success);
+    background: #f0fdf4;
+    border-radius: 10px;
+    padding: 14px;
+}
+.hermes-order-confirmed__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--h-success);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.hermes-order-confirmed__meta {
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: var(--h-text);
+}
+
+/* orders list */
+.hermes-orders {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--h-border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.hermes-order-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--h-border-soft);
+    font-size: 12.5px;
+}
+.hermes-order-row:last-child { border-bottom: none; }
+.hermes-order-row__id { font-weight: 600; color: var(--h-text); font-variant-numeric: tabular-nums; }
+.hermes-order-row__date { color: var(--h-text-soft); font-size: 11.5px; }
+.hermes-order-row__status {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--h-bg-sunken);
+    color: var(--h-text-soft);
+}
+.hermes-order-row__status.finalizado { background: #dcfce7; color: #166534; }
+.hermes-order-row__status.entregado  { background: #dbeafe; color: #1e40af; }
+.hermes-order-row__status.pendiente  { background: #fef3c7; color: #854d0e; }
+.hermes-order-row__total { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* action chip (navegacion) */
+.hermes-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--h-accent);
+    background: var(--h-accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    font-family: var(--h-font);
+}
+.hermes-action:hover { opacity: 0.9; }
+.hermes-action svg { width: 12px; height: 12px; }
+
+/* Quick suggestions */
+#hermes-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 14px 6px;
+    flex-shrink: 0;
+}
+.hermes-chip {
+    background: var(--h-bg);
+    border: 1px solid var(--h-border);
+    color: var(--h-text);
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    font-family: var(--h-font);
+}
+.hermes-chip:hover { border-color: var(--h-accent); background: var(--h-bg-soft); }
+
+/* Input row */
+#hermes-input-wrap {
+    padding: 10px 12px 12px;
+    border-top: 1px solid var(--h-border);
+    background: var(--h-bg);
+    flex-shrink: 0;
+}
+#hermes-input-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    background: var(--h-bg-sunken);
+    border: 1px solid var(--h-border);
+    border-radius: 10px;
+    padding: 6px 6px 6px 10px;
+    transition: border-color 0.15s ease;
+}
+#hermes-input-row:focus-within {
+    border-color: var(--h-accent);
+    background: var(--h-bg);
+}
+#hermes-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13.5px;
+    color: var(--h-text);
+    font-family: var(--h-font);
+    resize: none;
+    line-height: 1.4;
+    max-height: 100px;
+    padding: 5px 0;
+}
+#hermes-input::placeholder { color: var(--h-text-faint); }
+#hermes-send {
+    background: var(--h-accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: opacity 0.15s ease;
+}
+#hermes-send:disabled { opacity: 0.3; cursor: not-allowed; }
+#hermes-send svg { width: 14px; height: 14px; }
+
+#hermes-hint {
+    font-size: 10.5px;
+    color: var(--h-text-faint);
+    margin-top: 6px;
+    text-align: center;
+    letter-spacing: 0.01em;
+}
+#hermes-hint kbd {
+    font-family: var(--h-font);
+    background: var(--h-bg-sunken);
+    border: 1px solid var(--h-border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 10px;
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+    #hermes-panel {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 85vh;
+        max-height: 85vh;
+        border-radius: 14px 14px 0 0;
+    }
+    #hermes-fab { bottom: 16px; right: 16px; }
+}
+
+/* Dark mode (auto si .dark-theme en body) */
+body.dark-theme {
+    --h-bg:           #0a0a0b;
+    --h-bg-soft:      #18181b;
+    --h-bg-sunken:    #27272a;
+    --h-border:       #3f3f46;
+    --h-border-soft:  #2e2e32;
+    --h-text:         #fafafa;
+    --h-text-soft:    #a1a1aa;
+    --h-text-faint:   #71717a;
+    --h-accent:       #fafafa;
+    --h-accent-soft:  #e4e4e7;
+    --h-user-bubble:  #fafafa;
+    --h-user-text:    #0a0a0b;
+    --h-bot-bubble:   #18181b;
+}
+body.dark-theme .hermes-bubble code { background: rgba(255,255,255,0.1); }
+body.dark-theme .hermes-order-confirmed { background: #052e1c; }

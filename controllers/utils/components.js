@@ -3,7 +3,10 @@
 */
 
 // Constante para establecer la ruta base del servidor.
-const SERVER_URL = 'http://localhost/NewPowerLetters/api/';
+// Se construye con el origen actual ("http://host:puerto") + "/api/" para que
+// funcione en Docker, en producción y bajo cualquier dominio sin reconfigurar.
+// (new URL() requiere URL absoluta, por eso no basta con "/api/").
+const SERVER_URL = window.location.origin + '/api/';
 
 /*
 *   Función para mostrar un mensaje de confirmación. Requiere la librería sweetalert para funcionar.
@@ -222,10 +225,15 @@ const fetchData = async (filename, action, form = null) => {
         PATH.searchParams.append('action', action);
         // Se define una constante tipo objeto con la respuesta de la petición.
         const RESPONSE = await fetch(PATH.href, OPTIONS);
-        // Se retorna el resultado en formato JSON.
-        return await RESPONSE.json();
+        const TEXT = await RESPONSE.text();
+        try {
+            return JSON.parse(TEXT);
+        } catch (parseErr) {
+            console.error('Respuesta no JSON del servidor:', TEXT);
+            return { status: 0, session: 0, error: 'El servidor devolvió una respuesta inválida. Revisa la consola del navegador.', exception: TEXT.slice(0, 300) };
+        }
     } catch (error) {
-        // Se muestra un mensaje en la consola del navegador web cuando ocurre un problema.
-        console.log(error);
+        console.error('Error de red en fetchData:', error);
+        return { status: 0, session: 0, error: 'Error de conexión con el servidor: ' + error.message };
     }
 }

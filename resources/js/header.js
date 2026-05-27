@@ -18,7 +18,7 @@ header.innerHTML = `
             <ul class="nav__list">
 
                <li class="nav__item">
-                  <a href="../Public/index.html" class="nav__link active-link">
+                  <a href="../public/index.html" class="nav__link active-link">
                      <i class="ri-home-line"></i>
                      <span>Inicio</span>
                   </a>
@@ -26,21 +26,21 @@ header.innerHTML = `
 
 
                <li class="nav__item">
-                  <a href="../Public/descuento.html" class="nav__link">
+                  <a href="../public/descuento.html" class="nav__link">
                      <i class="ri-bookmark-line"></i>
                      <span>Libros nuevos</span>
                   </a>
                </li>
 
                <li class="nav__item">
-                  <a href="../Public/libros_recomendados.html" class="nav__link">
+                  <a href="../public/libros_recomendados.html" class="nav__link">
                      <i class="ri-book-3-line"></i>
                      <span>Recomendados</span>
                   </a>
                </li>
 
                <li class="nav__item">
-                  <a href="../Public/comentarios.html" class="nav__link">
+                  <a href="../public/comentarios.html" class="nav__link">
                      <i class="ri-message-3-line"></i>
                      <span>Comentarios</span>
                   </a>

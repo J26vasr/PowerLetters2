@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+*.md
+docker-compose.override.yml
+node_modules
+.vscode
+.idea
+*.log

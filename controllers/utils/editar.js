@@ -37,19 +37,19 @@ const loadTemplate = async () => {
             <div class="nav__menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="../Public/index.html" class="nav__link active-link">
+                        <a href="../public/index.html" class="nav__link active-link">
                             <i class="ri-home-line"></i>
                             <span>Inicio</span>
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="../Public/descuento.html" class="nav__link">
+                        <a href="../public/descuento.html" class="nav__link">
                             <i class="ri-bookmark-line"></i>
                             <span>Libros nuevos</span>
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="../Public/libros_recomendados.html" class="nav__link">
+                        <a href="../public/libros_recomendados.html" class="nav__link">
                             <i class="ri-book-3-line"></i>
                             <span>Recomendados</span>
                         </a>
